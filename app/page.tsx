@@ -210,8 +210,8 @@ export default function Home() {
         </div>
 
          {/* Tabs centered */}
-<div className="mt-6 flex justify-center">
-  <div className="inline-flex w-fit items-center justify-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
+<div className="mt-6 flex justify-center px-2 sm:px-0">
+  <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
     {TABS.map((tab) => {
       const active = tab === activeTab;
       return (
