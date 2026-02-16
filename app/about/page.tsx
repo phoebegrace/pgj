@@ -28,6 +28,7 @@ export default function AboutPage() {
           About Phoebe Grace Juayong
         </h1>
 
+        {/* INTRO */}
         <p className="mt-6 max-w-3xl text-white/70 leading-relaxed text-[15px] sm:text-base">
           I build structured digital systems that connect web platforms,
           automation workflows, and AI-powered creative tools into cohesive,
@@ -35,8 +36,104 @@ export default function AboutPage() {
           artificial intelligence, and real-world systems execution.
         </p>
 
-        {/* Education Section */}
+        {/* PERSONAL PROFILE */}
+        <div className="mt-16 max-w-4xl">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Personal Profile
+          </h2>
+
+          <p className="mt-6 text-white/70 leading-relaxed text-[15px] sm:text-base">
+            I’m a Computer Science graduate specializing in Artificial
+            Intelligence, with a strong focus on automation systems,
+            structured workflows, and digital authority building.
+          </p>
+
+          <p className="mt-4 text-white/70 leading-relaxed text-[15px] sm:text-base">
+            Beyond technical execution, I enjoy blending logic with creativity —
+            building funnels, designing digital assets, editing short-form
+            content, and creating structured systems that actually move results.
+            I naturally gravitate toward optimization, organization, and
+            turning chaos into clarity.
+          </p>
+
+          <p className="mt-4 text-white/70 leading-relaxed text-[15px] sm:text-base">
+            Outside of professional work, I lead community-based creative
+            projects, manage large-scale events, and enjoy producing content
+            that connects people. I value discipline, leadership, and long-term
+            skill development — traits I developed through academic excellence,
+            scouting, and organizational leadership roles.
+          </p>
+        </div>
+
+        {/* PERSONAL DETAILS */}
+<div className="mt-12">
+  <h2 className="text-2xl font-semibold tracking-tight">
+    Personal Details
+  </h2>
+
+  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {[
+      { label: "Age", value: "23" }, // update if needed
+      { label: "Location", value: "Antique, Philippines" },
+      { label: "Time Zone", value: "GMT+8 (Philippine Time) - Flexible" },
+      { label: "Work Setup", value: "Remote & Hybrid" },
+      { label: "Nationality", value: "Filipino" },
+      { label: "Availability", value: "Open to international clients" },
+    ].map((item) => (
+      <div
+        key={item.label}
+        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+      >
+        <div className="text-xs uppercase tracking-wide text-white/40">
+          {item.label}
+        </div>
+        <div className="mt-2 text-sm text-white/80">
+          {item.value}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+        {/* WHAT DRIVES ME */}
         <div className="mt-16">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            What Drives Me
+          </h2>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                title: "Structured Systems",
+                desc: "I enjoy building workflows, funnels, and automations that remove friction and improve clarity.",
+              },
+              {
+                title: "AI + Creative Integration",
+                desc: "I explore how AI tools can enhance digital media, content systems, and scalable online platforms.",
+              },
+              {
+                title: "Leadership & Execution",
+                desc: "From events to digital operations, I step into responsibility and make sure outcomes are delivered.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+              >
+                <div className="text-lg font-semibold">
+                  {item.title}
+                </div>
+                <p className="mt-3 text-sm text-white/70 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* EDUCATION SECTION */}
+        <div className="mt-20">
           <h2 className="text-2xl font-semibold tracking-tight">
             Education
           </h2>

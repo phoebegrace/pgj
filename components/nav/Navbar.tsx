@@ -120,14 +120,18 @@ export default function Navbar() {
             {open && (
               <motion.div
                 ref={panelRef}
-                className="absolute left-0 right-0 top-[calc(100%+10px)] z-[9999] overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 backdrop-blur-xl md:hidden"
+                className={[
+                  "absolute left-0 right-0 top-[calc(100%+10px)] z-[9999] overflow-hidden rounded-2xl border border-white/10 md:hidden",
+                  // ✅ stronger “glass” so background text won’t show through
+                  "bg-zinc-950/85 backdrop-blur-2xl backdrop-saturate-150",
+                ].join(" ")}
                 initial={{ opacity: 0, y: -6, scale: 0.98, filter: "blur(10px)" }}
                 animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -6, scale: 0.98, filter: "blur(10px)" }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
                 style={{
                   boxShadow:
-                    "0 0 0 1px rgba(255,255,255,.05), 0 24px 80px rgba(0,0,0,.55)",
+                    "0 0 0 1px rgba(255,255,255,.05), 0 24px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05)",
                 }}
               >
                 <div className="p-2">

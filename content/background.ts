@@ -1,4 +1,5 @@
 export type ExperienceItem = {
+  id?: string; // ✅ add this
   title: string;
   org: string;
   location?: string;
@@ -6,6 +7,7 @@ export type ExperienceItem = {
   bullets: string[];
   tags?: string[];
 };
+
 
 export type EducationItem = {
   school: string;
@@ -17,57 +19,71 @@ export type EducationItem = {
 
 export const experience: ExperienceItem[] = [
   {
+    title: "Digital Operations Assistant",
+    org: "Geoff Luna Group (Independent Contractor)",
+    date: "January 2026 — Present",
+    bullets: [
+      "Built and optimized funnel pages and websites for marketing and course-based campaigns.",
+      "Developed structured course materials and digital assets for program delivery.",
+      "Managed social media posting workflows and content scheduling.",
+      "Designed graphics and edited short-form videos for marketing and brand growth.",
+    ],
+    tags: ["Funnels", "Web", "Design", "Short-Form Video", "Operations", "GoHighLevel", "Canva", "CapCut", "VistaSocial", "AI Tools", "Shopify"],
+  },
+  {
+    id: "tesda",
     title: "Government Internship Program (GIP)",
     org: "TESDA | Provincial Office, Antique",
     location: "Antique, Philippines",
-    date: "Mar 2024 — Present",
+    date: "September 2025 — December 2025",
     bullets: [
       "Assisted the Provincial Director in planning and executing major events (incl. WorldSkills Competition 2025 – Provincial Level).",
       "Led technical + creative team for presentations, LED materials, and event marketing assets (tarpaulins, posters, video promotions).",
       "Coordinated logistics and documentation for provincial events and training programs.",
     ],
-    tags: ["Events", "Creative Ops", "Documentation"],
-  },
-  {
-    title: "Student Intern",
-    org: "Primof Funnel Marketing Solutions Inc.",
-    date: "Internship",
-    bullets: [
-      "Developed and optimized GoHighLevel (GHL) funnels and automation workflows for client accounts.",
-      "Integrated AI tools and website components to improve user experience and operational efficiency.",
-      "Collaborated with web development + marketing teams across front-end and back-end implementation.",
-    ],
-    tags: ["GoHighLevel", "Automation", "Web"],
+    tags: ["Events", "Creative Ops", "Documentation", "Canva", "Video Editing", "OBS", "ElevenLabs", "Suno", "Leadership", "Government", "CapCut"],
   },
   {
     title: "Executive Virtual Assistant",
     org: "Freelance",
-    date: "Contract",
+    date: "October 2025 - December 2025",
     bullets: [
       "Supported a financial group by managing daily operations and automation through GoHighLevel (GHL) + Wavv Dialer.",
       "Created weekly/monthly performance reports and maintained CRM data accuracy.",
       "Managed task automations to streamline workflows and ensure timely task distribution.",
     ],
-    tags: ["CRM", "Dialer", "Reporting"],
+    tags: ["GoHighLevel", " WAVV Dialer", "Reporting"],
   },
+    {
+    title: "Student Intern",
+    org: "Primof Funnel Marketing Solutions Inc.",
+    date: "January 2025 — April 2025",
+    bullets: [
+      "Developed and optimized GoHighLevel (GHL) funnels and automation workflows for client accounts.",
+      "Integrated AI tools and website components to improve user experience and operational efficiency.",
+      "Collaborated with web development + marketing teams across front-end and back-end implementation.",
+    ],
+    tags: ["GoHighLevel", "Automation", "Web", "Figma", "Canva", "Zapier"],
+  },
+    {
+    id: "hmpc", 
+    title: "Graphic Designer (Project-Based)",
+    org: "Hamtic Multi-Purpose Corporation",
+    date: "July 2025",
+    bullets: [
+        "Designed tarpaulins, event posters, booklets, and presentation slides for corporate/community events.",
+    ],
+    tags: ["Branding", "Print", "Slides"],
+    },
   {
     title: "Founder & Creative Content Creator",
     org: "AVP - Iloilo | K-pop Fanclub",
-    date: "Community",
+    date: "March 2024 - Present",
     bullets: [
       "Designed and produced creative materials (pubmats, videos) for fan events and community projects.",
       "Led and managed large-scale events (200+ attendees) and received positive feedback.",
     ],
-    tags: ["Design", "Video", "Community"],
-  },
-  {
-    title: "Graphic Designer (Project-Based)",
-    org: "Hamtic Multi-Purpose Corporation",
-    date: "Project-based",
-    bullets: [
-      "Designed tarpaulins, event posters, booklets, and presentation slides for corporate/community events.",
-    ],
-    tags: ["Branding", "Print", "Slides"],
+    tags: ["Design", "Video", "Community", "Social Media Posting", "Canva", "CapCut"],
   },
   {
     title: "Creative Content Creator & Technical Support Volunteer",

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/content/projects";
-import ModalCarousel from "./ModalCarousel";
+import ModalCarousel, { type CarouselMediaItem } from "./ModalCarousel";
 
 export default function ProjectModal({
   project,
@@ -17,6 +17,18 @@ export default function ProjectModal({
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
+
+  // ✅ Normalize: project.media (embed/image) OR fallback to project.images
+  const resolvedMedia: CarouselMediaItem[] = useMemo(() => {
+    if (!project) return [];
+
+    // If you later add project.media, it will be used automatically
+    const maybeMedia = (project as any).media as CarouselMediaItem[] | undefined;
+    if (maybeMedia?.length) return maybeMedia;
+
+    // fallback: old images array
+    return (project.images ?? []).map((src) => ({ type: "image" as const, src }));
+  }, [project]);
 
   return (
     <AnimatePresence>
@@ -57,7 +69,7 @@ export default function ProjectModal({
               }}
             />
 
-            {/* ✅ scrollable content area */}
+            {/* scrollable content */}
             <div className="max-h-[85vh] overflow-y-auto p-6 pr-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -74,15 +86,16 @@ export default function ProjectModal({
                 </button>
               </div>
 
-              <div className="mt-5">
-                <ModalCarousel images={project.images} title={project.title} />
-              </div>
+              {/* ✅ Carousel */}
+              {resolvedMedia.length ? (
+                <div className="mt-5">
+                  <ModalCarousel media={resolvedMedia} title={project.title} />
+                </div>
+              ) : null}
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <div>
-                  <div className="text-sm font-medium text-white/90">
-                    Highlights
-                  </div>
+                  <div className="text-sm font-medium text-white/90">Highlights</div>
                   <ul className="mt-3 space-y-2 text-sm text-white/70">
                     {project.highlights.map((h) => (
                       <li key={h} className="flex gap-2">
@@ -112,9 +125,7 @@ export default function ProjectModal({
                     ))}
                   </div>
 
-                  <div className="mt-5 text-sm font-medium text-white/90">
-                    Links
-                  </div>
+                  <div className="mt-5 text-sm font-medium text-white/90">Links</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.links.map((l) => (
                       <a

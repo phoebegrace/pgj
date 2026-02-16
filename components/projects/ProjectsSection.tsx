@@ -1,11 +1,61 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { projects, type Project } from "@/content/projects";
 import ProjectModal from "./ProjectModal";
-import ProjectCarousel from "./ProjectCarousel";
 
 const tabs: Array<Project["category"] | "All"> = ["All", "Systems", "Web", "AI", "Media"];
+
+function AutoPreview({ slides }: { slides: string[] }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!slides?.length) return;
+    if (slides.length === 1) {
+      setIndex(0);
+      return;
+    }
+
+    const id = window.setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 4000); // ⏳ slower switch (4s)
+
+    return () => window.clearInterval(id);
+  }, [slides]);
+
+  if (!slides?.length) return null;
+
+  return (
+    <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/20">
+      {slides.map((src, i) => (
+        <img
+          key={`${src}-${i}`}
+          src={src}
+          alt=""
+          className={[
+            "absolute inset-0 h-full w-full object-cover select-none",
+            "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]", // smoother easing
+            i === index
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-[1.02]", // subtle zoom out
+          ].join(" ")}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+        />
+      ))}
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(11,15,23,.55) 100%)",
+        }}
+      />
+    </div>
+  );
+}
+
 
 export default function ProjectsSection() {
   const [active, setActive] = useState<(typeof tabs)[number]>("All");
@@ -17,7 +67,10 @@ export default function ProjectsSection() {
   }, [active]);
 
   const selected = useMemo(
-    () => filtered.find((p) => p.id === openId) || projects.find((p) => p.id === openId) || null,
+    () =>
+      filtered.find((p) => p.id === openId) ||
+      projects.find((p) => p.id === openId) ||
+      null,
     [openId, filtered]
   );
 
@@ -53,37 +106,49 @@ export default function ProjectsSection() {
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((p) => (
-          <button
-            key={p.id}
-            onClick={() => setOpenId(p.id)}
-            className="group text-left rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-white/20 hover:bg-white/10"
-          >
-            <ProjectCarousel images={p.images} /><div className="mt-4 flex items-center justify-between gap-3">
-              <span className="text-xs text-white/60">{p.category}</span>
-              <span className="text-xs text-white/40 transition group-hover:text-white/60">
-                Click to open ↗
-              </span>
-            </div>
+        {filtered.map((p) => {
+          // ✅ autoplay slides: prefer media images; fallback to images
+          const slides =
+            p.media?.filter((m) => m.type === "image").map((m) => m.src) ??
+            p.images ??
+            [];
 
-            <div className="mt-3 text-lg font-semibold">{p.title}</div>
-            <div className="mt-2 text-sm text-white/70">{p.oneLiner}</div>
+          return (
+            <button
+              key={p.id}
+              onClick={() => setOpenId(p.id)}
+              className="group text-left rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-white/20 hover:bg-white/10"
+            >
+              {/* ✅ Auto-rotating preview (no video badge) */}
+              {slides.length ? <AutoPreview slides={slides} /> : null}
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.tools.slice(0, 3).map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-                >
-                  {tool}
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <span className="text-xs text-white/60">{p.category}</span>
+                <span className="text-xs text-white/40 transition group-hover:text-white/60">
+                  Click to open ↗
                 </span>
-              ))}
-            </div>
-          </button>
-        ))}
+              </div>
+
+              <div className="mt-3 text-lg font-semibold">{p.title}</div>
+              <div className="mt-2 text-sm text-white/70">{p.oneLiner}</div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {p.tools.slice(0, 3).map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       <ProjectModal project={selected} onClose={() => setOpenId(null)} />
     </section>
   );
 }
+ 
