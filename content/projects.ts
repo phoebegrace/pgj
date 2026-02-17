@@ -27,7 +27,7 @@ export const projects: Project[] = [
 // personal portfolio
 {
   id: "personal-portfolio",
-  title: "Personal Portfolio Website (v3)",
+  title: "Personal Portfolio Website",
   category: "Web",
 
   oneLiner:
@@ -219,7 +219,7 @@ Beyond design updates, the migration ensured smoother integration with CRM workf
 // merrylonmain
 {
   id: "merrylonmain",
-  title: "Merry Lonmain – Business Meetup Funnel Page",
+  title: "Business Meetup Funnel Page",
   category: "Web",
 
   oneLiner:
@@ -267,7 +267,7 @@ The structure was optimized for readability, credibility, and mobile responsiven
 // ncrea
 {
   id: "ncrea-course",
-  title: "NCREA Course – Platform Migration & Content Structuring",
+  title: "NCREA Course",
   category: "Systems",
 
   oneLiner:
@@ -635,7 +635,7 @@ The project involved dataset preprocessing, emotion classification modeling, sys
 //naevisasks
 {
   id: "naevisasks",
-  title: "NaevisAsks",
+  title: "NaevisAsks – AI-Powered Quiz App",
   category: "AI",
 
   oneLiner:
@@ -690,7 +690,7 @@ A dynamic scoring system tracks performance, and the AI persona (“Naevis”) p
 //ascii
 {
   id: "ascii-project",
-  title: "ASCII Image Converter – Multi-Language Systems Analysis",
+  title: "ASCII Image Converter",
   category: "Systems",
 
   oneLiner:
@@ -747,7 +747,7 @@ The conclusion identified mid-level programming (C) as the most practical balanc
 //slider puzzle
 {
   id: "slider-puzzle",
-  title: "Slider Puzzle",
+  title: "Slider Puzzle Game",
   category: "Systems",
 
   oneLiner:
@@ -796,7 +796,7 @@ The game includes two modes: Classic Mode and Challenge Mode. In Challenge Mode,
 //dirlock
 {
   id: "dirlock",
-  title: "DirLock",
+  title: "DirLock – Windows Batch Directory Locking Script",
   category: "Systems",
 
   oneLiner:
