@@ -52,7 +52,13 @@ const experienceOptions: Array<{ id: string; label: string; title: string }> = [
   },
 ];
 
-function AutoPreview({ slides }: { slides: string[] }) {
+function AutoPreview({
+  slides,
+  priority = false,
+}: {
+  slides: string[];
+  priority?: boolean;
+}) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -69,27 +75,31 @@ function AutoPreview({ slides }: { slides: string[] }) {
 
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/20">
-      {slides.map((src, i) => (
-        <div
-          key={`${src}-${i}`}
-          className={[
-            "absolute inset-0",
-            "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]",
-            i === index ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]",
-          ].join(" ")}
-        >
-          <Image
-            src={src}
-            alt=""
-            fill
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 33vw"
-            className="object-cover"
-            quality={70}
-            loading="lazy"
-            priority={i === 0}
-          />
-        </div>
-      ))}
+      {slides.map((src, i) => {
+        const isPriority = priority && i === 0;
+
+        return (
+          <div
+            key={`${src}-${i}`}
+            className={[
+              "absolute inset-0",
+              "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]",
+              i === index ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]",
+            ].join(" ")}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 33vw"
+              className="object-cover"
+              quality={70}
+              priority={isPriority}
+              loading={isPriority ? undefined : "lazy"}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -106,7 +116,6 @@ export default function ProjectsSection() {
     setExp(expFromUrl);
   }, [expFromUrl]);
 
-  // if URL exp is invalid, fall back safely
   const currentExperience =
     experienceOptions.find((o) => o.id === exp) ?? experienceOptions[0];
 
@@ -195,7 +204,7 @@ export default function ProjectsSection() {
 
       {/* Grid */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((p) => {
+        {filtered.map((p, idx) => {
           const slides =
             p.media?.filter((m) => m.type === "image").map((m) => m.src) ??
             p.images ??
@@ -207,7 +216,10 @@ export default function ProjectsSection() {
               onClick={() => setOpenId(p.id)}
               className="group rounded-2xl border border-white/10 bg-white/5 p-5 text-left transition hover:border-white/20 hover:bg-white/10"
             >
-              {slides.length > 0 && <AutoPreview slides={slides} />}
+              {/* ✅ Only the first visible card gets priority */}
+              {slides.length > 0 && (
+                <AutoPreview slides={slides} priority={idx === 0} />
+              )}
 
               <div className="mt-4 text-xs text-white/60">{p.category}</div>
               <div className="mt-2 text-lg font-semibold">{p.title}</div>

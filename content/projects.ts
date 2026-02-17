@@ -24,45 +24,54 @@ export type Project = {
 
 export const projects: Project[] = [
   
-
-//portfolio
+// personal portfolio
 {
   id: "personal-portfolio",
-  title: "Personal Portfolio Website",
+  title: "Personal Portfolio Website (v3)",
   category: "Web",
-  oneLiner:
-    "Designed and rebuilt multiple iterations of my personal portfolio across different platforms.",
-  overview:
-    "A multi-version portfolio project showcasing the evolution of my personal brand. From Canva-based layouts to custom-coded deployments, each iteration focused on improving structure, design system consistency, and interactive presentation.",
-  highlights: [
-    "Built portfolio iterations across Canva, static hosting, and custom deployment",
-    "Improved layout hierarchy and content structuring",
-    "Deployed production-ready site via Vercel",
-    "Focused on responsive design and UI refinement",
-  ],
-  tools: ["Next.js", "Tailwind", "Vercel", "Canva", "UI Structuring"],
 
-  // ✅ Card preview slides
+  oneLiner:
+    "Architected and deployed the third iteration of my personal portfolio, built with Next.js and TypeScript as a fully custom system.",
+
+  overview: `This is the third version of my personal portfolio and the most technically refined one to date. My first portfolio, built a year ago, was primarily a cloned repository used to understand structure and deployment fundamentals. Since then, I have progressively rebuilt each version with deeper ownership over architecture, design systems, and frontend logic.
+
+The current version is fully custom-built using Next.js, TypeScript, and Tailwind CSS, and deployed via Vercel. It represents my growth in web development — from layout replication to structured system design.
+
+Beyond presentation, this portfolio integrates interactive and production-level features including an AI-powered chatbot (Peboo) powered by OpenAI, email handling integration using Resend, dynamic project filtering, responsive UI architecture, and modular component structuring.
+
+The carousel visually reflects my progression across versions — from early static layouts to a scalable, interactive, and system-oriented web application. This is the project I am most proud of, as it reflects both my technical maturity and personal brand evolution.`,
+
+  highlights: [
+    "Built with Next.js, TypeScript, and Tailwind CSS",
+    "Integrated AI chatbot (OpenAI-powered)",
+    "Implemented email handling via Resend",
+    "Designed modular component architecture",
+    "Deployed production-ready site via Vercel",
+    "Created dynamic filtering and interactive UI systems",
+    "Rebuilt portfolio from cloned foundation to fully custom architecture",
+  ],
+
+  tools: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vercel",
+    "OpenAI API",
+    "Resend",
+    "React",
+    "UI System Architecture",
+  ],
+
   images: [
     "/images/projects/personal/portfolio/p1.png",
     "/images/projects/personal/portfolio/p2.png",
     "/images/projects/personal/portfolio/p3.png",
   ],
 
-  // ✅ Modal gallery
   media: [
-    {
-      type: "image",
-      src: "/images/projects/personal/portfolio/p1.png",
-    },
-    {
-      type: "image",
-      src: "/images/projects/personal/portfolio/p2.png",
-    },
-    {
-      type: "image",
-      src: "/images/projects/personal/portfolio/p3.png",
-    },
+    { type: "image", src: "/images/projects/personal/portfolio/p1.png" },
+    { type: "image", src: "/images/projects/personal/portfolio/p2.png" },
+    { type: "image", src: "/images/projects/personal/portfolio/p3.png" },
   ],
 
   links: [
@@ -97,7 +106,7 @@ export const projects: Project[] = [
     "Improved CTA placement and messaging hierarchy",
     "Built responsive premium UI sections",
   ],
-  tools: ["GoHighLevel", "Custom HTML/CSS", "Responsive Design"],
+  tools: ["GoHighLevel", "Custom HTML/CSS", "Gemini AI for image generation"],
   images: [
     "/images/projects/geoffluna/tech20/t20.png",
   ],
@@ -122,7 +131,7 @@ export const projects: Project[] = [
     "Narrative-based messaging flow",
     "Automation-ready architecture",
   ],
-  tools: ["GoHighLevel", "Funnel Psychology", "CRM Workflow Planning"],
+  tools: ["GoHighLevel", "Canva", "Custom HTML/CSS"],
   images: [
     "/images/projects/geoffluna/coast2coast/c2c.png",
   ],
@@ -136,52 +145,51 @@ export const projects: Project[] = [
 // discoversouthern
 {
   id: "discoversouthern",
-  title: "Discover Southern (DSCA)",
+  title: "Discover Southern California",
   category: "Web",
+
   oneLiner:
-    "Structured web updates improving clarity, layout, and brand authority.",
-  overview:
-    "Implemented layout refinements and UI adjustments to improve visual hierarchy and section flow while maintaining brand consistency.",
+    "Led website rebranding and platform migration to GoHighLevel to modernize structure and unify marketing systems.",
+
+  overview: `This project focused on rebranding and restructuring the existing Discover Southern California website while migrating it from its previous platform into GoHighLevel (GHL).
+
+The objective was not only visual refinement but full platform consolidation — aligning the website with the client's marketing automation ecosystem inside GHL. I rebuilt sections using custom HTML/CSS, improved layout hierarchy, and modernized the design system to enhance brand authority and clarity.
+
+Beyond design updates, the migration ensured smoother integration with CRM workflows, lead capture forms, and future automation scaling. The result was a more cohesive, conversion-ready website aligned with the client’s long-term digital strategy.`,
+
   highlights: [
-    "Improved spacing and layout structure",
-    "Refined section hierarchy",
-    "Maintained responsive behavior",
+    "Rebranded and modernized legacy website design",
+    "Migrated site from previous platform to GoHighLevel",
+    "Rebuilt layouts using custom HTML/CSS inside GHL",
+    "Improved section hierarchy and content clarity",
+    "Ensured CRM and lead capture integration compatibility",
+    "Maintained full responsive behavior across devices",
   ],
-  tools: ["GoHighLevel", "Custom HTML/CSS", "Responsive Design"],
+
+  tools: [
+    "GoHighLevel",
+    "Custom HTML/CSS",
+    "Platform Migration",
+    "Responsive Design",
+    "CRM Integration",
+  ],
+
   images: [
     "/images/projects/geoffluna/discoversouthernca/dsca.png",
   ],
+
   media: [
-    { type: "image", src: "/images/projects/geoffluna/discoversouthernca/dsca.png" },
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/discoversouthernca/dsca.png",
+    },
   ],
+
   links: [],
+
   experienceIds: ["lunatik"],
 },
 
-// geofflunarealestate
-{
-  id: "geofflunarealestate",
-  title: "Geoff Luna Real Estate",
-  category: "Web",
-  oneLiner:
-    "Real estate web build focused on premium layout and structured messaging.",
-  overview:
-    "Built and refined a real estate-focused website with clear hierarchy, strong section flow, and a polished UI aligned with brand positioning.",
-  highlights: [
-    "Structured real estate messaging layout",
-    "Premium spacing and hierarchy system",
-    "Responsive implementation",
-  ],
-  tools: ["GoHighLevel", "Custom HTML/CSS", "UI Structuring"],
-  images: [
-    "/images/projects/geoffluna/geofflunarealestate/gl.png",
-  ],
-  media: [
-    { type: "image", src: "/images/projects/geoffluna/geofflunarealestate/gl.png" },
-  ],
-  links: [],
-  experienceIds: ["lunatik"],
-},
 
 // lunatik
 {
@@ -211,119 +219,201 @@ export const projects: Project[] = [
 // merrylonmain
 {
   id: "merrylonmain",
-  title: "Merry Lonmain Landing Page",
+  title: "Merry Lonmain – Business Meetup Funnel Page",
   category: "Web",
+
   oneLiner:
-    "Landing page build with improved structure and responsive implementation.",
-  overview:
-    "Created a structured landing page with clear hierarchy, readable spacing, and premium layout consistency across screen sizes.",
+    "Designed and built a brand-aligned funnel page for a business meetup invitation and RSVP flow.",
+
+  overview: `Developed a structured funnel page for a business meetup event, designed to reflect the client's brand identity while clearly communicating event details and objectives.
+
+The page was built inside GoHighLevel using custom HTML/CSS to ensure layout precision, clean spacing, and professional visual hierarchy. Emphasis was placed on clarity — guiding visitors through the event overview, key information, and RSVP action without friction.
+
+The structure was optimized for readability, credibility, and mobile responsiveness to ensure a seamless experience across devices while supporting registration and follow-up workflows within the GHL system.`,
+
   highlights: [
-    "Optimized section flow",
-    "Clean spacing system",
-    "Mobile-responsive build",
+    "Built brand-aligned event invitation funnel",
+    "Structured section flow for clarity and credibility",
+    "Integrated RSVP / registration flow inside GHL",
+    "Implemented custom HTML/CSS for layout precision",
+    "Ensured responsive design across devices",
+    "Aligned page structure with event communication goals",
   ],
-  tools: ["GoHighLevel", "Custom HTML/CSS", "Responsive Design"],
+
+  tools: [
+    "GoHighLevel",
+    "Custom HTML/CSS",
+    "Event Funnel Structuring",
+    "RSVP Integration",
+  ],
+
   images: [
     "/images/projects/geoffluna/merrylonmain/mom.png",
   ],
+
   media: [
-    { type: "image", src: "/images/projects/geoffluna/merrylonmain/mom.png" },
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/merrylonmain/mom.png",
+    },
   ],
+
   links: [],
+
   experienceIds: ["lunatik"],
 },
+
 
 // ncrea
 {
   id: "ncrea-course",
-  title: "NCREA Course Page",
+  title: "NCREA Course – Platform Migration & Content Structuring",
   category: "Systems",
+
   oneLiner:
-    "Structured course-focused build designed for clarity and conversion flow.",
-  overview:
-    "Developed a course presentation page with structured information hierarchy and conversion-driven layout decisions.",
+    "Migrated and restructured a full course system into the client’s GoHighLevel agency account with enhanced visual and content presentation.",
+
+  overview: `This project involved transferring an existing course from a separate GoHighLevel account into the client’s agency-level GHL environment.
+
+Beyond migration, I redesigned course thumbnails, reuploaded and organized learning materials, and enhanced captions and descriptions for improved clarity and professionalism. The objective was to ensure the course structure aligned with the client’s branding while improving content readability and learner experience.
+
+The process required careful asset management, structured content hierarchy, and system-level organization within GHL’s course framework to maintain functionality while upgrading presentation quality.`,
+
   highlights: [
-    "Structured course content hierarchy",
-    "Conversion-focused layout decisions",
-    "Responsive implementation",
+    "Migrated full course system between GHL accounts",
+    "Reuploaded and structured course materials",
+    "Redesigned course thumbnails for brand consistency",
+    "Enhanced captions and descriptions for clarity",
+    "Improved course hierarchy and learner navigation",
+    "Ensured functionality within client’s agency-level GHL setup",
   ],
-  tools: ["GoHighLevel", "Course Structuring", "UI Hierarchy"],
+
+  tools: [
+    "GoHighLevel",
+    "Course Migration",
+    "Thumbnail Design",
+    "UI Hierarchy",
+  ],
+
   images: [
     "/images/projects/geoffluna/ncrea/course.png",
   ],
+
   media: [
-    { type: "image", src: "/images/projects/geoffluna/ncrea/course.png" },
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/ncrea/course.png",
+    },
   ],
+
   links: [],
+
   experienceIds: ["lunatik"],
 },
 
 
-
 //tesda worldskills
-  {
-    id: "tesda-worldskills",
-    title: "TESDA WorldSkills Event Assets",
-    category: "Media",
-    oneLiner:
-      "Produced multi-format event materials for TESDA’s provincial-level WorldSkills.",
-    overview:
-      "Created and coordinated presentation and marketing assets for provincial events, including event visuals for LED display, tarpaulins, posters, and promotional graphics—kept consistent for on-site execution.",
-    highlights: [
-      "Designed event-ready tarpaulins, posters, and promo graphics",
-      "Built presentation materials and LED visuals for live use",
-      "Kept layouts consistent across print + screen formats",
-      "Supported documentation and event execution workflow",
-    ],
-    tools: ["Canva", "Print Layout", "Event Design", "Video/Promo Editing"],
-    images: [
-      "/images/projects/tesda/worldskills.png",
-      "/images/projects/tesda/tarpaulin.png",
-      "/images/projects/tesda/poster.png",
-    ],
-    media: [
-      { type: "image", src: "/images/projects/tesda/worldskills/ws5.jpg" },
-      { type: "image", src: "/images/projects/tesda/worldskills/ws1.png" },
-      { type: "image", src: "/images/projects/tesda/worldskills/ws2.png" },
-      { type: "image", src: "/images/projects/tesda/worldskills/ws3.jpg" },
-      { type: "image", src: "/images/projects/tesda/worldskills/ws4.jpg" },
-      {
-        type: "embed",
-        src: "https://www.youtube.com/embed/lE_XiMrVHK4?rel=0&modestbranding=1",
-        title: "TESDA WorldSkills Event Teaser",
-      },
-          {
-        type: "embed",
-        src: "https://www.youtube.com/embed/bl7YX8RFcHI?rel=0&modestbranding=1",
-        title: "TESDA WorldSkills Opening Prayer",
-      },
-                {
-        type: "embed",
-        src: "https://www.youtube.com/embed/HKtYqOgf8pQ?rel=0&modestbranding=1",
-        title: "TESDA WorldSkills Theme Song",
-      },
-    ],
-    links: [],
-    experienceIds: ["tesda"],
-  },
-
-
-//tesda success stories
-  {
-  id: "tesda-success-stories",
-  title: "TESDA Success Stories Campaign",
+{
+  id: "tesda-worldskills",
+  title: "TESDA - Antique WorldSkills Competition 2025",
   category: "Media",
+
   oneLiner:
-    "Produced multi-format success story videos highlighting TESDA scholars' real-world impact.",
-  overview:
-    "Led the creative production of TESDA success story features, showcasing scholars who completed training programs and achieved career breakthroughs. Managed video structure, visual storytelling, and presentation consistency across all outputs.",
+    "Led creative direction and multimedia execution for TESDA WorldSkills provincial event, overseeing design, live visuals, and production systems.",
+
+  overview: `Led the full creative execution for the TESDA WorldSkills provincial-level event in Antique, overseeing visual direction, multimedia production, and live technical implementation.
+
+I designed and controlled LED presentation slides during the event using OBS, ensuring seamless on-site visual transitions and program flow. In addition, I produced the official event teaser, opening prayer video, and theme song (generated using Suno AI), alongside designing tarpaulins, posters, program schedules, competitor IDs, certificates, medals, and other event assets.
+
+Beyond creative production, I assisted the Provincial Director of TESDA Antique in planning and execution, contributing to both pre-event preparation and live event coordination. The result was a cohesive, professional event experience across screen, print, audio, and stage presentation.`,
+
   highlights: [
-    "Produced and edited scholar success story videos",
-    "Structured narrative-driven interview flow",
-    "Maintained consistent branding across all video outputs",
-    "Optimized content for public and social media distribution",
+    "Led overall creative direction for provincial WorldSkills event",
+    "Designed and operated live LED visuals using OBS",
+    "Produced event teaser, opening prayer video, and theme song (Suno AI)",
+    "Designed tarpaulins, posters, competitor IDs, certificates, and medals",
+    "Structured program flow and event schedule design",
+    "Maintained visual consistency across print, screen, and live stage",
+    "Assisted TESDA Provincial Director in planning and execution",
   ],
-  tools: ["Video Editing", "Canva", "CapCut", "OBS", "Storytelling"],
+
+  tools: [
+    "Canva",
+    "OBS Studio",
+    "Suno AI",
+    "Event Design Systems",
+    "Video Production",
+    "Print Layout",
+    "AI-Assisted Media Creation",
+  ],
+
+  images: [
+    "/images/projects/tesda/worldskills.png",
+    "/images/projects/tesda/tarpaulin.png",
+    "/images/projects/tesda/poster.png",
+  ],
+
+  media: [
+    { type: "image", src: "/images/projects/tesda/worldskills/ws5.jpg" },
+    { type: "image", src: "/images/projects/tesda/worldskills/ws1.png" },
+    { type: "image", src: "/images/projects/tesda/worldskills/ws2.png" },
+    { type: "image", src: "/images/projects/tesda/worldskills/ws3.jpg" },
+    { type: "image", src: "/images/projects/tesda/worldskills/ws4.jpg" },
+    {
+      type: "embed",
+      src: "https://www.youtube.com/embed/lE_XiMrVHK4?rel=0&modestbranding=1",
+      title: "TESDA WorldSkills Event Teaser",
+    },
+    {
+      type: "embed",
+      src: "https://www.youtube.com/embed/bl7YX8RFcHI?rel=0&modestbranding=1",
+      title: "TESDA WorldSkills Opening Prayer",
+    },
+    {
+      type: "embed",
+      src: "https://www.youtube.com/embed/HKtYqOgf8pQ?rel=0&modestbranding=1",
+      title: "TESDA WorldSkills Theme Song",
+    },
+  ],
+
+  links: [],
+  experienceIds: ["tesda"],
+},
+
+
+
+// tesda success stories
+{
+  id: "tesda-success-stories",
+  title: "TESDA Success Stories – Documentary Campaign",
+  category: "Media",
+
+  oneLiner:
+    "Directed and produced documentary-style success story features highlighting TESDA scholars’ real-world impact.",
+
+  overview: `This was my first major project during my internship at TESDA Antique, where I led the end-to-end production of scholar success story features.
+
+I conducted field visits to interview successful TESDA graduates, directed the interview flow, captured on-site footage, and edited the final videos for public release. Each story was structured to highlight the scholar’s journey — from training to career breakthrough — emphasizing the tangible impact of TESDA programs.
+
+Beyond editing, I managed narrative flow, visual pacing, and branding consistency across all outputs. The videos were optimized for public information campaigns and social media distribution, ensuring accessibility and engagement while maintaining a professional documentary tone.`,
+
+  highlights: [
+    "Conducted field interviews with TESDA scholars",
+    "Directed narrative-driven documentary structure",
+    "Captured on-site footage and B-roll",
+    "Edited and finalized multi-format video outputs",
+    "Maintained branding and storytelling consistency",
+    "Optimized videos for social media and public release",
+  ],
+
+  tools: [
+    "Video Production",
+    "Interview Direction",
+    "CapCut",
+    "Canva",
+    "Field Documentation",
+    "Storytelling Structure",
+  ],
 
   images: [
     "/images/projects/tesda/success-stories/ss1.jpg",
@@ -333,7 +423,6 @@ export const projects: Project[] = [
   media: [
     { type: "image", src: "/images/projects/tesda/success stories/ss1.jpg" },
     { type: "image", src: "/images/projects/tesda/success stories/ss2.jpg" },
-
     {
       type: "embed",
       src: "https://www.youtube.com/embed/4Iys7Xa_xiA?rel=0&modestbranding=1",
@@ -362,28 +451,43 @@ export const projects: Project[] = [
 },
 
 
+
 //primof
 {
   id: "primof-funnel-automation",
-  title: "Primof Projects: Collection",
+  title: "Primof Projects: Funnel & Automation Systems",
   category: "Systems",
+
   oneLiner:
-    "Built and refined marketing funnels and CRM automation workflows during internship at Primof.",
-  overview:
-    "Contributed to funnel development and automation system structuring at Primof Funnel Marketing Solutions Inc. Worked on layout optimization, messaging clarity, and CRM-integrated workflow planning to support affiliate marketing and conversion-focused campaigns.",
+    "Trained in GoHighLevel and contributed to marketing funnel and CRM automation systems during my internship at Primof.",
+
+  overview: `My internship at Primof Funnel Marketing Solutions Inc. marked my first deep exposure to GoHighLevel and structured marketing systems. I was trained in funnel architecture, CRM automation, and workflow logic while contributing to real affiliate and conversion-driven campaigns.
+
+Activities included funnel hacking, email nurture sequence structuring, workflow trigger configuration, lead capture systems, and form/calendar integrations. I worked closely with senior team members in developing scalable automation structures and refining messaging hierarchy for higher conversion clarity.
+
+This experience strengthened both my technical and creative execution — particularly on the frontend side, where I optimized layouts using custom HTML/CSS within GoHighLevel. Being introduced to GHL significantly shaped my direction toward systems-building and automation, and it remains one of the foundations of my current work.`,
+
   highlights: [
+    "Trained in GoHighLevel (GHL) funnel and CRM system architecture",
     "Built and refined multi-step marketing funnels",
-    "Structured CRM-ready automation workflows",
-    "Improved messaging hierarchy for better conversion clarity",
-    "Collaborated within a multi-team marketing environment",
-    "Iterated across multiple funnel and automation versions",
+    "Structured email nurture sequences and workflow triggers",
+    "Configured lead capture systems with form & calendar integrations",
+    "Performed funnel hacking and competitive structure analysis",
+    "Assisted senior team members in system development & automation logic",
+    "Customized frontend layouts using HTML/CSS within GHL",
   ],
+
   tools: [
     "GoHighLevel",
-    "Funnel Structuring",
     "CRM Automation",
-    "Workflow Planning",
+    "Workflow Triggers",
+    "Email Nurture Sequences",
+    "Lead Capture Systems",
+    "Funnel Hacking",
+    "Custom HTML/CSS",
+    "Zapier",
     "Canva",
+    "Figma",
   ],
 
   images: [
@@ -471,22 +575,40 @@ export const projects: Project[] = [
 
 //UNDERGRADUATE
 
-//zenlens
+// zenlens
 {
   id: "zenlens",
-  title: "Zenlens",
-  category: "Web",
+  title: "Zenlens – AI-Based Classroom Stress Detection System",
+  category: "AI", 
+
   oneLiner:
-    "An undergraduate web project focused on structured UI design and responsive implementation.",
-  overview:
-    "Zenlens is an undergraduate project built to explore structured web layout design, responsive behavior, and modern UI presentation. The project emphasizes clean interface organization, visual hierarchy, and functional deployment.",
+    "Undergraduate thesis project developing a facial emotion recognition system to estimate classroom-level stress metrics.",
+
+  overview: `Zenlens is a two-year undergraduate thesis project focused on building an AI-driven system capable of detecting students’ stress levels based on facial expressions.
+
+The system was trained using the FER2013 dataset to classify seven core emotions. Each detected emotion was assigned a weighted value contributing to an aggregated classroom stress index. The objective was to provide instructors with insight into overall emotional trends within a classroom setting.
+
+The project involved dataset preprocessing, emotion classification modeling, system logic for stress computation, and web-based deployment for visualization. Zenlens represents an applied computer vision solution combining machine learning, UI implementation, and research-driven system design. The current version is fully functional and designed with scalability considerations for future expansion.`,
+
   highlights: [
-    "Designed and implemented responsive web interface",
-    "Structured layout with clear visual hierarchy",
-    "Applied modern UI styling principles",
-    "Deployed production-ready build",
+    "Trained emotion recognition model using FER2013 dataset",
+    "Classified seven facial emotion categories",
+    "Designed weighted stress-level computation logic",
+    "Built web interface for visualization and interaction",
+    "Integrated ML output into structured frontend system",
+    "Developed over a two-year research cycle",
   ],
-  tools: ["HTML", "CSS", "JavaScript", "Netlify"],
+
+  tools: [
+    "Python",
+    "FER2013 Dataset",
+    "Machine Learning",
+    "Emotion Classification",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Netlify",
+  ],
 
   images: [
     "/images/projects/undergraduate/zenlens.png",
@@ -509,29 +631,44 @@ export const projects: Project[] = [
   experienceIds: ["undergraduate"],
 },
 
+
 //naevisasks
 {
   id: "naevisasks",
   title: "NaevisAsks",
-  category: "Web",
-  oneLiner:
-    "An undergraduate web application exploring interactive user input and structured interface design.",
-  overview:
-    "NaevisAsks is an undergraduate project focused on building an interactive web-based interface that handles user input, structured content display, and logical UI behavior. The project emphasizes clean layout implementation and front-end structuring.",
-  highlights: [
-    "Built interactive user input functionality",
-    "Structured responsive UI layout",
-    "Implemented logical front-end behavior",
-    "Published project repository on GitHub",
-  ],
-  tools: ["HTML", "CSS", "JavaScript", "GitHub"],
+  category: "AI",
 
-  // ✅ Card thumbnail (same directory as Zenlens)
+  oneLiner:
+    "Built a gamified AI quiz application using OpenAI API with dynamic answer validation and personality-driven responses.",
+
+  overview: `NaevisAsks is an undergraduate AI-powered web application built using Python and Streamlit, integrating the OpenAI API for intelligent answer verification.
+
+The application features three difficulty categories (Easy, Medium, Hard), each generating category-based questions. User responses are evaluated by the AI model, which verifies correctness while allowing minor spelling and capitalization errors to avoid strict false negatives.
+
+A dynamic scoring system tracks performance, and the AI persona (“Naevis”) provides sarcastic or playful feedback based on results — creating an engaging, gamified user experience. The project explores prompt engineering, response validation logic, tolerance handling, and personality-driven AI interaction design.`,
+
+  highlights: [
+    "Integrated OpenAI API for intelligent answer verification",
+    "Implemented difficulty-based question categorization (Easy, Medium, Hard)",
+    "Built dynamic scoring and scoreboard tracking system",
+    "Handled answer tolerance (minor spelling/capitalization errors)",
+    "Designed AI persona with contextual, sarcastic responses",
+    "Developed interactive UI using Streamlit",
+  ],
+
+  tools: [
+    "Python",
+    "Streamlit",
+    "OpenAI API",
+    "Prompt Engineering",
+    "AI Response Validation",
+    "GitHub",
+  ],
+
   images: [
     "/images/projects/undergraduate/naevisasks.png",
   ],
 
-  // ✅ Modal media
   media: [
     {
       type: "image",
@@ -549,29 +686,46 @@ export const projects: Project[] = [
   experienceIds: ["undergraduate"],
 },
 
+
 //ascii
 {
   id: "ascii-project",
-  title: "ASCII Project",
+  title: "ASCII Image Converter – Multi-Language Systems Analysis",
   category: "Systems",
-  oneLiner:
-    "An experimental project exploring visual output using ASCII-based design concepts.",
-  overview:
-    "An undergraduate creative experiment focused on ASCII-based visual composition and structured character formatting. The project explored how text-based elements can form structured digital visuals and layouts.",
-  highlights: [
-    "Explored ASCII-based visual structuring",
-    "Applied character formatting for digital composition",
-    "Experimented with text-as-design concepts",
-    "Presented structured output through visual documentation",
-  ],
-  tools: ["ASCII Formatting", "Canva", "Layout Structuring"],
 
-  // ✅ Thumbnail (same undergraduate directory)
+  oneLiner:
+    "Developed an image-to-ASCII converter implemented in Assembly, C, and Python to analyze performance across programming levels.",
+
+  overview: `This undergraduate project explored the differences between low-level, mid-level, and high-level programming by implementing the same image-to-ASCII conversion system in Assembly, C, and Python.
+
+The system converts images to grayscale, maps pixel brightness values to a predefined ASCII character set (from darkest to lightest), and reconstructs a visual representation using text characters. Darker pixels are assigned dense characters (e.g., "@"), while lighter pixels are mapped to lighter characters (e.g., "." or space), forming a structured ASCII-based output.
+
+The project evaluated execution speed, memory efficiency, scalability, and development complexity across all three implementations. Performance testing revealed that Python struggled with large inputs (~10,000 pixels), demonstrating slower execution and less efficient memory handling. C provided a strong balance between performance and development effort, handling larger resolutions reliably. Assembly achieved optimal speed but required significantly higher development complexity and maintenance effort.
+
+The conclusion identified mid-level programming (C) as the most practical balance between performance, control, and scalability.`,
+
+  highlights: [
+    "Implemented image-to-ASCII converter in Assembly, C, and Python",
+    "Designed grayscale-to-ASCII brightness mapping logic",
+    "Benchmarked execution speed and memory efficiency",
+    "Tested scalability with increasing image resolutions",
+    "Analyzed trade-offs between abstraction level and performance",
+    "Concluded C as optimal balance of control and efficiency",
+  ],
+
+  tools: [
+    "Assembly",
+    "C",
+    "Python",
+    "Image Processing",
+    "Performance Benchmarking",
+    "Memory Management Analysis",
+  ],
+
   images: [
     "/images/projects/undergraduate/ascii.png",
   ],
 
-  // ✅ Modal media
   media: [
     {
       type: "image",
@@ -589,29 +743,43 @@ export const projects: Project[] = [
   experienceIds: ["undergraduate"],
 },
 
+
 //slider puzzle
 {
   id: "slider-puzzle",
-  title: "Slider Puzzle Game",
+  title: "Slider Puzzle",
   category: "Systems",
-  oneLiner:
-    "A logic-based puzzle game built to explore state management and interactive systems design.",
-  overview:
-    "An undergraduate systems project focused on building a functional slider puzzle game. The project required structured logic implementation, tile state tracking, and dynamic UI updates based on user interaction.",
-  highlights: [
-    "Implemented grid-based puzzle logic",
-    "Handled dynamic tile state management",
-    "Built interactive game behavior system",
-    "Applied structured problem-solving techniques",
-  ],
-  tools: ["JavaScript", "Game Logic", "State Management", "UI Interaction"],
 
-  // ✅ Thumbnail
+  oneLiner:
+    "Developed a grid-based puzzle game in Python featuring dynamic scaling, time mechanics, and leaderboard tracking.",
+
+  overview: `This undergraduate project involved building a fully functional slider puzzle game using Python, focused on structured game logic and interactive state management.
+
+Players can choose different grid sizes and must rearrange shuffled tiles into the correct order. The system dynamically tracks tile states, validates legal moves, and updates the interface based on user interaction.
+
+The game includes two modes: Classic Mode and Challenge Mode. In Challenge Mode, grid size increases progressively after each successful completion, introducing dynamic difficulty scaling. A timer system tracks completion time, with bonus time added after clearing each grid level. A leaderboard feature ranks players based on best completion times, reinforcing competitive logic and persistent state tracking.`,
+
+  highlights: [
+    "Implemented dynamic grid-based puzzle logic",
+    "Developed tile movement validation and state tracking",
+    "Designed progressive difficulty scaling system",
+    "Integrated timer with bonus time mechanics",
+    "Built leaderboard ranking system for performance tracking",
+    "Structured game flow across multiple difficulty modes",
+  ],
+
+  tools: [
+    "Python",
+    "Game Logic Design",
+    "State Management",
+    "Dynamic Grid Systems",
+    "Algorithmic Validation",
+  ],
+
   images: [
     "/images/projects/undergraduate/slider.png",
   ],
 
-  // ✅ Modal media
   media: [
     {
       type: "image",
@@ -624,22 +792,36 @@ export const projects: Project[] = [
   experienceIds: ["undergraduate"],
 },
 
+
 //dirlock
 {
   id: "dirlock",
   title: "DirLock",
   category: "Systems",
+
   oneLiner:
-    "A simple batch script that locks and unlocks a specific directory using password protection.",
-  overview:
-    "DirLock is a lightweight batch scripting project designed to control access to a specified folder. The script enables users to lock and unlock a directory through a password-based prompt, demonstrating basic file system manipulation and command-line automation.",
+    "Developed a Windows batch script to control directory access through permission-based locking and password logic.",
+
+  overview: `DirLock is a lightweight Windows batch scripting application designed to restrict access to specific directories by modifying file system permissions.
+
+The script enables users to lock a folder, effectively denying unauthorized access, and unlock it through a password-based prompt. Instead of relying on third-party software, the solution uses built-in command-line utilities to automate permission control at the operating system level.
+
+This project demonstrates foundational understanding of file system manipulation, access restriction logic, and command-line automation. It provides a simple yet effective approach to local directory security while minimizing external dependencies.`,
+
   highlights: [
-    "Automated directory locking and unlocking",
-    "Implemented password-based access logic",
-    "Used Windows batch scripting for file control",
-    "Explored command-line level automation",
+    "Automated directory locking and unlocking process",
+    "Implemented password-based access control logic",
+    "Modified Windows directory permissions programmatically",
+    "Utilized built-in command-line utilities (no third-party tools)",
+    "Explored lightweight security automation concepts",
   ],
-  tools: ["Batch Script", "Windows Command Line", "File System Control"],
+
+  tools: [
+    "Windows Batch Script",
+    "Command Line Interface (CLI)",
+    "File System Permissions",
+    "Access Control Logic",
+  ],
 
   images: [
     "/images/projects/undergraduate/dirlock.png",
@@ -665,19 +847,33 @@ export const projects: Project[] = [
 //combochow
 {
   id: "combochow",
-  title: "ComboChow",
-  category: "Web",
+  title: "ComboChow – Food Discovery & Budget Tracking App",
+  category: "Systems",
+
   oneLiner:
-    "A UI concept project that helps users decide what to eat through structured interaction design.",
-  overview:
-    "ComboChow is a UI-focused undergraduate concept project designed to assist users in choosing meal combinations. The project emphasizes intuitive layout structuring, clean visual hierarchy, and user-centered decision flow.",
+    "Designed a multi-kiosk food discovery platform concept that centralizes menu browsing, discount discovery, and expense tracking.",
+
+  overview: `ComboChow is an undergraduate product concept focused on simplifying meal decision-making within multi-kiosk dining environments.
+
+The platform allows users to browse menus across different kiosks in one interface, check product availability, discover discounts, and track food spending through a built-in logging system. The objective was to eliminate the need to visit individual kiosks and instead provide a centralized decision-support experience.
+
+The project emphasized structured user flows, clean visual hierarchy, and intuitive interaction design. UI prototypes were developed using Flutter for conceptual interaction mapping and Figma for interface design and presentation.`,
+
   highlights: [
-    "Designed user-centered meal selection interface",
-    "Structured intuitive interaction flow",
-    "Applied clean UI layout principles",
-    "Presented concept through structured visual documentation",
+    "Designed centralized multi-kiosk browsing interface",
+    "Integrated product availability and discount visibility concepts",
+    "Implemented food expense logging and tracking flow",
+    "Structured user decision-making journey",
+    "Developed UI prototypes using Flutter and Figma",
   ],
-  tools: ["UI Design", "Canva", "User Flow Structuring", "Layout Design"],
+
+  tools: [
+    "Flutter",
+    "Figma",
+    "UI/UX Design",
+    "User Flow Architecture",
+    "Product Concept Development",
+  ],
 
   images: [
     "/images/projects/undergraduate/cc.png",
@@ -701,22 +897,36 @@ export const projects: Project[] = [
 },
 
 
-//mandala
+//mandala art
 {
   id: "mandala-art",
-  title: "Mandala Art Generator",
+  title: "Mandala Art Generator – Procedural Geometry in Python",
   category: "Systems",
+
   oneLiner:
-    "An undergraduate project generating structured mandala patterns through programmatic design.",
-  overview:
-    "Mandala Art is an undergraduate creative coding project focused on generating symmetrical mandala-style visuals using structured logic and pattern repetition. The project explores geometric symmetry, algorithmic layout, and visual composition through code.",
+    "Built a procedural mandala generator using Python Turtle Graphics to explore symmetry and algorithmic pattern design.",
+
+  overview: `Mandala Art Generator is an undergraduate creative coding project developed using Python and Turtle Graphics to programmatically generate symmetrical mandala-style visuals.
+
+The system applies rotational symmetry, geometric repetition, and structured loop logic to produce layered circular patterns. By manipulating angles, step increments, and shape combinations, the design evolves algorithmically rather than being manually drawn.
+
+Inspired by traditional mandala symbolism and personal childhood references, the project explores how structured code can transform mathematical repetition into visually expressive digital art. It demonstrates foundational understanding of procedural generation, geometric computation, and algorithmic composition.`,
+
   highlights: [
-    "Implemented symmetrical pattern generation logic",
-    "Applied geometric repetition techniques",
-    "Explored creative coding concepts",
-    "Published source code on GitHub",
+    "Implemented rotational symmetry using loop-based logic",
+    "Applied geometric repetition and angle transformations",
+    "Developed procedural pattern generation system",
+    "Utilized Python Turtle Graphics for visual rendering",
+    "Explored intersection of mathematics and creative coding",
   ],
-  tools: ["JavaScript", "Algorithmic Design", "Geometric Logic", "GitHub"],
+
+  tools: [
+    "Python",
+    "Turtle Graphics",
+    "Algorithmic Geometry",
+    "Procedural Design",
+    "GitHub",
+  ],
 
   images: [
     "/images/projects/undergraduate/mandala.png",
@@ -743,7 +953,7 @@ export const projects: Project[] = [
 //yobeesaidwhat
 {
   id: "yobeesaidwhat",
-  title: "YOBEESAIDWHAT",
+  title: "yobeesaidwhat – Independent AI Music Artist",
   category: "AI",
   oneLiner:
     "Independent AI music artist releasing concept-driven tracks across major streaming platforms.",
@@ -753,7 +963,6 @@ export const projects: Project[] = [
     "Released original AI-assisted tracks on global streaming platforms",
     "Built cohesive artist branding and concept direction",
     "Managed independent music distribution via DistroKid",
-    "Developed AI-assisted production workflows",
   ],
   tools: ["Suno", "DistroKid", "AI Music Production", "Creative Direction"],
 
@@ -847,6 +1056,7 @@ export const projects: Project[] = [
   experienceIds: ["personal"],
 },
 
+//ai automation shorts
 {
   id: "ai-automation-shorts",
   title: "AI Automations",
@@ -901,57 +1111,42 @@ export const projects: Project[] = [
   id: "lyric-videos",
   title: "Lyric Video Productions",
   category: "Media",
+
   oneLiner:
-    "Produced stylized lyric videos optimized for YouTube distribution.",
-  overview:
-    "A personal creative project focused on lyric video production, combining typography animation, mood-driven visuals, and music synchronization. Each video was structured for viewer retention and YouTube optimization.",
+    "Early-stage lyric video projects that marked the beginning of my video editing journey.",
+
+  overview: `I started creating lyric videos at age 16 as a self-taught introduction to video editing. While the uploaded projects are relatively simple in execution, they represent the foundation of my understanding of pacing, timing, and music-synced editing.
+
+Through these projects, I learned how to structure visuals around audio flow, animate basic typography, and export content optimized for YouTube. Over the years, my editing skills have significantly evolved beyond these early uploads, but this series reflects where my creative discipline began.
+
+The project demonstrates long-term consistency in creative exploration and the early development of storytelling through motion and sound.`,
+
   highlights: [
-    "Designed animated lyric typography",
-    "Matched visuals to song emotion and pacing",
-    "Optimized videos for YouTube audience retention",
-    "Managed full production from concept to export",
+    "Self-taught introduction to video editing",
+    "Applied music-synced text timing and pacing",
+    "Produced and published content on YouTube",
+    "Built foundation in creative media workflow",
   ],
-  tools: ["CapCut", "Video Editing", "Typography Animation", "YouTube Studio"],
+
+  tools: [
+    "CapCut",
+    "Basic Typography Animation",
+    "Video Editing Fundamentals",
+    "YouTube Studio",
+  ],
 
   images: [
     "/images/projects/personal/lyricvideos/lv.png",
   ],
 
   media: [
-    {
-      type: "image",
-      src: "/images/projects/personal/lyricvideos/lv.png",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/HN5D0I-T9Ig",
-      title: "Lyric Video 1",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/h5u1ow0SSAs",
-      title: "Lyric Video 2",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/8ueoWzjtucI",
-      title: "Lyric Video 3",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/yirVgnCFghk",
-      title: "Lyric Video 4",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/32YipueWNLc",
-      title: "Lyric Video 5",
-    },
-    {
-      type: "embed",
-      src: "https://www.youtube.com/embed/TLh75C2blsw",
-      title: "Lyric Video 6",
-    },
+    { type: "image", src: "/images/projects/personal/lyricvideos/lv.png" },
+    { type: "embed", src: "https://www.youtube.com/embed/HN5D0I-T9Ig", title: "Lyric Video 1" },
+    { type: "embed", src: "https://www.youtube.com/embed/h5u1ow0SSAs", title: "Lyric Video 2" },
+    { type: "embed", src: "https://www.youtube.com/embed/8ueoWzjtucI", title: "Lyric Video 3" },
+    { type: "embed", src: "https://www.youtube.com/embed/yirVgnCFghk", title: "Lyric Video 4" },
+    { type: "embed", src: "https://www.youtube.com/embed/32YipueWNLc", title: "Lyric Video 5" },
+    { type: "embed", src: "https://www.youtube.com/embed/TLh75C2blsw", title: "Lyric Video 6" },
   ],
 
   links: [
@@ -965,22 +1160,39 @@ export const projects: Project[] = [
 },
 
 
-//avp
-  {
+
+// avp
+{
   id: "aespaverse",
-  title: "Aespaverse Iloilo",
+  title: "aespaverse Iloilo",
   category: "Media",
+
   oneLiner:
-    "Built and managed a multi-platform fan community brand with consistent visual identity and content strategy.",
-  overview:
-    "Led the creative direction and content production for Aespaverse Iloilo, a local fan community initiative. Managed branding, visual assets, and short-form media content across multiple social platforms while maintaining a cohesive identity aligned with K-pop fan culture and event collaborations.",
+    "Founded and led a multi-platform K-pop fan community brand with structured content strategy and cohesive visual identity.",
+
+  overview: `aespaverse Iloilo (formerly aespa Iloilo) is a local fan community initiative that I founded and currently lead, based in Iloilo City.
+
+I oversee the brand’s visual identity, content direction, and platform strategy across TikTok, X (Twitter), Instagram, and Facebook. The initiative focuses on structured community engagement, event promotions, and collaborative activities aligned with K-pop fan culture.
+
+Beyond content production, I manage branding consistency, short-form media editing, promotional design assets for events and giveaways, and overall growth strategy. The project reflects hands-on leadership in digital branding, community systems management, and cross-platform media execution.`,
+
   highlights: [
-    "Developed consistent visual branding across platforms",
+    "Founder and head of aespaverse Iloilo community",
+    "Developed and maintained cohesive brand identity",
     "Produced short-form content for TikTok and Instagram",
-    "Designed promotional graphics for events and giveaways",
-    "Managed community engagement and growth strategy",
+    "Designed promotional materials for events and giveaways",
+    "Managed multi-platform publishing strategy",
+    "Led community engagement and growth initiatives",
   ],
-  tools: ["Canva", "CapCut", "Content Strategy", "Community Management"],
+
+  tools: [
+    "Canva",
+    "CapCut",
+    "Content Strategy",
+    "Community Management",
+    "Social Media Branding",
+    "Leadership",
+  ],
 
   images: [
     "/images/projects/avp/avp1.png",
@@ -1059,16 +1271,16 @@ export const projects: Project[] = [
   title: "Carrd Website Projects",
   category: "Web",
   oneLiner:
-    "Designed and published minimalist landing pages using Carrd.",
+    "Designed and published interactive landing pages using Carrd.",
   overview:
-    "A collection of lightweight landing pages built using Carrd. Focused on clean layout structuring, concise messaging, and mobile-first presentation for personal branding and community initiatives.",
+    "A collection of lightweight landing pages built using Carrd. Focused on clean layout structuring, concise messaging, and a presentation for personal branding and community initiatives.",
   highlights: [
     "Built responsive one-page websites",
     "Structured concise, conversion-focused layouts",
     "Optimized for mobile-first viewing",
     "Designed minimalist branding systems",
   ],
-  tools: ["Carrd", "Layout Structuring", "Mobile Optimization", "Brand Design"],
+  tools: ["Carrd", "Layout Structuring", "Visual Design", "Brand Design"],
 
   images: [
     "/images/projects/personal/carrd/carrd.png",
@@ -1102,26 +1314,38 @@ export const projects: Project[] = [
 //sparkart
 {
   id: "sparkart-community",
-  title: "Sparkart — Creative Community Initiative",
+  title: "Sparkart – Photocard Collection Tracking Platform",
   category: "Web",
-  oneLiner:
-    "Designed a digital community concept platform for creative collaboration and engagement.",
-  overview:
-    "Sparkart is a community-focused web initiative built to explore creative collaboration, digital engagement, and structured presentation of community-driven content. The project focused on layout structuring, clarity of messaging, and lightweight web deployment.",
-  highlights: [
-    "Designed structured community layout page",
-    "Organized content for digital engagement",
-    "Focused on clarity and visual hierarchy",
-    "Deployed via Vercel hosting",
-  ],
-  tools: ["HTML", "CSS", "Vercel", "Layout Structuring"],
 
-  // ✅ Card thumbnail
+  oneLiner:
+    "Built a personal web-based tracking system for organizing and displaying K-pop photocard collections.",
+
+  overview: `Sparkart was my first personal web project, built in 2023 as a photocard collector who wanted a structured digital space to track and display my collection.
+
+The platform allows users to filter photocards based on member, category, album era, and other metadata. Each card is interactive and flippable, showing front and back details to simulate a physical card experience.
+
+Built using HTML, CSS, and JavaScript, the project explores structured UI layout, filter logic implementation, and interactive state transitions. I plan to expand the concept to include more groups and potentially migrate it to a more scalable stack in the future.`,
+
+  highlights: [
+    "Built filterable photocard collection interface",
+    "Implemented dynamic filtering by member, album era, and category",
+    "Developed flippable card UI for front/back interaction",
+    "Structured metadata-driven display system",
+    "Designed with future scalability in mind",
+  ],
+
+  tools: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "UI Interaction Logic",
+    "Vercel",
+  ],
+
   images: [
     "/images/projects/personal/sparkart/s1.png",
   ],
 
-  // ✅ Modal media
   media: [
     {
       type: "image",
