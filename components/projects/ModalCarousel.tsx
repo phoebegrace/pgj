@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -52,7 +53,6 @@ export default function ModalCarousel(props: Props) {
 
   useEffect(() => {
     if (!zoomOpen) return;
-    // reset for each open
     setPan({ x: 0, y: 0 });
     setZoomScale(1.8);
     pointers.current.clear();
@@ -110,7 +110,6 @@ export default function ModalCarousel(props: Props) {
   };
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    // capture pointer so move continues even if finger leaves element
     (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
 
     const p = { x: e.clientX, y: e.clientY };
@@ -118,7 +117,7 @@ export default function ModalCarousel(props: Props) {
 
     const pts = Array.from(pointers.current.values());
 
-    // double tap reset (mobile-ish)
+    // double tap reset
     const now = Date.now();
     if (now - lastTap.current < 280) {
       resetView();
@@ -127,7 +126,6 @@ export default function ModalCarousel(props: Props) {
     }
     lastTap.current = now;
 
-    // start gesture baseline
     if (pts.length === 1) {
       gestureStart.current = {
         pan: { ...pan },
@@ -158,13 +156,11 @@ export default function ModalCarousel(props: Props) {
     if (!start) return;
 
     if (pts.length === 1) {
-      // pan
       const p = pts[0];
       const dx = p.x - start.center.x;
       const dy = p.y - start.center.y;
       setPan({ x: start.pan.x + dx, y: start.pan.y + dy });
     } else if (pts.length >= 2) {
-      // pinch zoom + pan anchored by pinch center movement
       const a = pts[0];
       const b = pts[1];
       const newDist = Math.max(1, dist(a, b));
@@ -185,7 +181,6 @@ export default function ModalCarousel(props: Props) {
     pointers.current.delete(e.pointerId);
 
     const pts = Array.from(pointers.current.values());
-    // rebase gesture start with remaining pointers so it doesn’t “jump”
     if (pts.length === 0) {
       gestureStart.current = null;
       return;
@@ -218,20 +213,25 @@ export default function ModalCarousel(props: Props) {
         <div className="relative aspect-video w-full">
           <AnimatePresence mode="wait">
             {current.type === "image" ? (
-              <motion.img
+              <motion.div
                 key={`img-${i}-${current.src}`}
-                src={current.src}
-                alt={`${title} preview ${i + 1}`}
-                draggable={false}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover cursor-zoom-in select-none"
+                className="absolute inset-0 cursor-zoom-in select-none"
                 onClick={openZoom}
                 initial={{ opacity: 0, x: 10, scale: 1.02 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -10, scale: 1.02 }}
                 transition={{ duration: 0.28, ease: "easeOut" }}
-              />
+              >
+                <Image
+                  src={current.src}
+                  alt={`${title} preview ${i + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 92vw, 768px"
+                  className="object-cover"
+                  quality={75}
+                  loading="lazy"
+                />
+              </motion.div>
             ) : (
               <motion.div
                 key={`embed-${i}-${current.src}`}
@@ -280,9 +280,7 @@ export default function ModalCarousel(props: Props) {
           )}
 
           <div className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
-            {current.type === "image"
-              ? "Tap to zoom • Pinch + drag"
-              : "Embedded video"}
+            {current.type === "image" ? "Tap to zoom • Pinch + drag" : "Embedded video"}
           </div>
 
           <div className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
@@ -365,16 +363,14 @@ export default function ModalCarousel(props: Props) {
               {/* Pan + Zoom viewer */}
               <div
                 className="relative aspect-video w-full overflow-hidden"
-                style={{
-                  // key for mobile: prevent browser scrolling/zoom gestures
-                  touchAction: "none",
-                }}
+                style={{ touchAction: "none" }}
                 onWheel={onWheelZoom}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerUpOrCancel}
                 onPointerCancel={onPointerUpOrCancel}
               >
+                {/* NOTE: zoom viewer uses a plain <img> to keep transform/pan simple */}
                 <motion.img
                   src={current.src}
                   alt={`${title} zoomed`}

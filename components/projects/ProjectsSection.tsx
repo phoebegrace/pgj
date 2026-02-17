@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { projects, type Project } from "@/content/projects";
@@ -14,7 +15,11 @@ const tabs: Array<Project["category"] | "All"> = [
 ];
 
 const experienceOptions: Array<{ id: string; label: string; title: string }> = [
-  { id: "all", label: "All experiences", title: "Projects with story-driven breakdowns" },
+  {
+    id: "all",
+    label: "All experiences",
+    title: "Projects with story-driven breakdowns",
+  },
   {
     id: "lunatik",
     label: "Lunatik / Geoff Luna Group",
@@ -36,7 +41,7 @@ const experienceOptions: Array<{ id: string; label: string; title: string }> = [
     title: "Primof Projects",
   },
   {
-    id: "personal", 
+    id: "personal",
     label: "Personal Projects",
     title: "Personal & Creative Lab Projects",
   },
@@ -65,16 +70,25 @@ function AutoPreview({ slides }: { slides: string[] }) {
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/20">
       {slides.map((src, i) => (
-        <img
+        <div
           key={`${src}-${i}`}
-          src={src}
-          alt=""
           className={[
-            "absolute inset-0 h-full w-full object-cover",
+            "absolute inset-0",
             "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]",
             i === index ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]",
           ].join(" ")}
-        />
+        >
+          <Image
+            src={src}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 33vw"
+            className="object-cover"
+            quality={70}
+            loading="lazy"
+            priority={i === 0}
+          />
+        </div>
       ))}
     </div>
   );
@@ -92,7 +106,9 @@ export default function ProjectsSection() {
     setExp(expFromUrl);
   }, [expFromUrl]);
 
-  const currentExperience = experienceOptions.find((o) => o.id === exp);
+  // if URL exp is invalid, fall back safely
+  const currentExperience =
+    experienceOptions.find((o) => o.id === exp) ?? experienceOptions[0];
 
   const filtered = useMemo(() => {
     let list = projects;
@@ -124,24 +140,26 @@ export default function ProjectsSection() {
 
           {/* ✅ Dynamic Title */}
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-            {currentExperience?.title}
+            {currentExperience.title}
           </h2>
 
           <p className="mt-2 max-w-2xl text-white/70">
-            Click any project to open a glass modal with the full story, tools, and links.
+            Click any project to open a glass modal with the full story, tools,
+            and links.
           </p>
         </div>
 
         {/* Experience Dropdown */}
         <div className="w-full sm:w-[320px]">
-          <label className="block text-xs text-white/60 mb-2">
+          <label className="mb-2 block text-xs text-white/60">
             Filter by experience
           </label>
+
           <div className="relative">
             <select
               value={exp}
               onChange={(e) => setExp(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 pr-10 text-sm backdrop-blur focus:outline-none hover:bg-white/7 transition"
+              className="w-full appearance-none rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 pr-10 text-sm backdrop-blur transition hover:bg-white/7 focus:outline-none"
             >
               {experienceOptions.map((o) => (
                 <option key={o.id} value={o.id} className="bg-[#0b0f17]">
@@ -187,7 +205,7 @@ export default function ProjectsSection() {
             <button
               key={p.id}
               onClick={() => setOpenId(p.id)}
-              className="group text-left rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-white/20 hover:bg-white/10"
+              className="group rounded-2xl border border-white/10 bg-white/5 p-5 text-left transition hover:border-white/20 hover:bg-white/10"
             >
               {slides.length > 0 && <AutoPreview slides={slides} />}
 
