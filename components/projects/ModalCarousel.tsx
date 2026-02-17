@@ -11,6 +11,14 @@ type Props =
   | { title: string; images: string[]; media?: never }
   | { title: string; media: CarouselMediaItem[]; images?: never };
 
+type Point = { x: number; y: number };
+
+function dist(a: Point, b: Point) {
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return Math.hypot(dx, dy);
+}
+
 export default function ModalCarousel(props: Props) {
   const title = props.title;
 
@@ -25,25 +33,30 @@ export default function ModalCarousel(props: Props) {
   // zoom overlay (images only)
   const [zoomOpen, setZoomOpen] = useState(false);
   const [zoomScale, setZoomScale] = useState(1.8);
-
-  // pan (drag) state for zoom overlay
   const [pan, setPan] = useState({ x: 0, y: 0 });
-  const [isPanning, setIsPanning] = useState(false);
-  const panStart = useRef<{ x: number; y: number; px: number; py: number } | null>(
-    null
-  );
+
+  // pointer tracking for pan + pinch
+  const pointers = useRef<Map<number, Point>>(new Map());
+  const gestureStart = useRef<{
+    pan: { x: number; y: number };
+    scale: number;
+    dist: number;
+    center: Point;
+  } | null>(null);
+
+  // double-tap reset (mobile)
+  const lastTap = useRef<number>(0);
 
   useEffect(() => setI(0), [title]);
-  useEffect(() => {
-    // close zoom when slide changes
-    setZoomOpen(false);
-  }, [i]);
+  useEffect(() => setZoomOpen(false), [i]);
 
-  // reset pan when zoom opens / changes
   useEffect(() => {
     if (!zoomOpen) return;
+    // reset for each open
     setPan({ x: 0, y: 0 });
     setZoomScale(1.8);
+    pointers.current.clear();
+    gestureStart.current = null;
   }, [zoomOpen, i, title]);
 
   // ESC to close zoom, +/- to zoom, lock scroll while zoomed
@@ -78,6 +91,124 @@ export default function ModalCarousel(props: Props) {
   const openZoom = () => {
     if (current.type !== "image") return;
     setZoomOpen(true);
+  };
+
+  const clampScale = (s: number) => Math.max(1, Math.min(5, +s.toFixed(2)));
+
+  const resetView = () => {
+    setPan({ x: 0, y: 0 });
+    setZoomScale(1);
+    pointers.current.clear();
+    gestureStart.current = null;
+  };
+
+  const onWheelZoom = (e: React.WheelEvent<HTMLDivElement>) => {
+    // desktop wheel/trackpad zoom
+    e.preventDefault();
+    const step = e.ctrlKey ? 0.12 : 0.18;
+    setZoomScale((s) => clampScale(e.deltaY > 0 ? s - step : s + step));
+  };
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // capture pointer so move continues even if finger leaves element
+    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+
+    const p = { x: e.clientX, y: e.clientY };
+    pointers.current.set(e.pointerId, p);
+
+    const pts = Array.from(pointers.current.values());
+
+    // double tap reset (mobile-ish)
+    const now = Date.now();
+    if (now - lastTap.current < 280) {
+      resetView();
+      lastTap.current = 0;
+      return;
+    }
+    lastTap.current = now;
+
+    // start gesture baseline
+    if (pts.length === 1) {
+      gestureStart.current = {
+        pan: { ...pan },
+        scale: zoomScale,
+        dist: 0,
+        center: pts[0],
+      };
+    } else if (pts.length >= 2) {
+      const a = pts[0];
+      const b = pts[1];
+      const center = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      gestureStart.current = {
+        pan: { ...pan },
+        scale: zoomScale,
+        dist: Math.max(1, dist(a, b)),
+        center,
+      };
+    }
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!pointers.current.has(e.pointerId)) return;
+
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const pts = Array.from(pointers.current.values());
+    const start = gestureStart.current;
+
+    if (!start) return;
+
+    if (pts.length === 1) {
+      // pan
+      const p = pts[0];
+      const dx = p.x - start.center.x;
+      const dy = p.y - start.center.y;
+      setPan({ x: start.pan.x + dx, y: start.pan.y + dy });
+    } else if (pts.length >= 2) {
+      // pinch zoom + pan anchored by pinch center movement
+      const a = pts[0];
+      const b = pts[1];
+      const newDist = Math.max(1, dist(a, b));
+      const factor = newDist / Math.max(1, start.dist);
+
+      const newScale = clampScale(start.scale * factor);
+
+      const newCenter = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      const cdx = newCenter.x - start.center.x;
+      const cdy = newCenter.y - start.center.y;
+
+      setZoomScale(newScale);
+      setPan({ x: start.pan.x + cdx, y: start.pan.y + cdy });
+    }
+  };
+
+  const onPointerUpOrCancel = (e: React.PointerEvent<HTMLDivElement>) => {
+    pointers.current.delete(e.pointerId);
+
+    const pts = Array.from(pointers.current.values());
+    // rebase gesture start with remaining pointers so it doesn’t “jump”
+    if (pts.length === 0) {
+      gestureStart.current = null;
+      return;
+    }
+
+    if (pts.length === 1) {
+      gestureStart.current = {
+        pan: { ...pan },
+        scale: zoomScale,
+        dist: 0,
+        center: pts[0],
+      };
+    } else {
+      const a = pts[0];
+      const b = pts[1];
+      const center = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      gestureStart.current = {
+        pan: { ...pan },
+        scale: zoomScale,
+        dist: Math.max(1, dist(a, b)),
+        center,
+      };
+    }
   };
 
   return (
@@ -149,7 +280,9 @@ export default function ModalCarousel(props: Props) {
           )}
 
           <div className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
-            {current.type === "image" ? "Click to zoom • Drag to pan" : "Embedded video"}
+            {current.type === "image"
+              ? "Tap to zoom • Pinch + drag"
+              : "Embedded video"}
           </div>
 
           <div className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
@@ -178,12 +311,11 @@ export default function ModalCarousel(props: Props) {
       <AnimatePresence>
         {zoomOpen && current.type === "image" && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-3 sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onMouseDown={(e) => {
-              // click outside closes
               if (e.target === e.currentTarget) setZoomOpen(false);
             }}
           >
@@ -200,25 +332,21 @@ export default function ModalCarousel(props: Props) {
                     {title}
                   </div>
                   <div className="text-xs text-white/55">
-                    Zoom: {zoomScale.toFixed(1)}× • Drag to pan • Scroll/pinch to zoom
-                    • Double-click to reset • ESC to close
+                    Zoom: {zoomScale.toFixed(1)}× • Pinch to zoom • Drag to pan •
+                    Double-tap to reset • ESC to close
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() =>
-                      setZoomScale((s) => Math.max(1, +(s - 0.25).toFixed(2)))
-                    }
+                    onClick={() => setZoomScale((s) => clampScale(s - 0.25))}
                     className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80 hover:bg-white/10 transition"
                     aria-label="Zoom out"
                   >
                     −
                   </button>
                   <button
-                    onClick={() =>
-                      setZoomScale((s) => Math.min(5, +(s + 0.25).toFixed(2)))
-                    }
+                    onClick={() => setZoomScale((s) => clampScale(s + 0.25))}
                     className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80 hover:bg-white/10 transition"
                     aria-label="Zoom in"
                   >
@@ -237,48 +365,23 @@ export default function ModalCarousel(props: Props) {
               {/* Pan + Zoom viewer */}
               <div
                 className="relative aspect-video w-full overflow-hidden"
-                // IMPORTANT: make wheel zoom work
-                onWheel={(e) => {
-                  e.preventDefault();
-                  const step = e.ctrlKey ? 0.12 : 0.18; // ctrlKey often = trackpad pinch
-                  setZoomScale((s) => {
-                    const next = e.deltaY > 0 ? s - step : s + step;
-                    return Math.max(1, Math.min(5, +next.toFixed(2)));
-                  });
+                style={{
+                  // key for mobile: prevent browser scrolling/zoom gestures
+                  touchAction: "none",
                 }}
-                onMouseDown={(e) => {
-                  setIsPanning(true);
-                  panStart.current = { x: e.clientX, y: e.clientY, px: pan.x, py: pan.y };
-                }}
-                onMouseMove={(e) => {
-                  if (!panStart.current) return;
-                  const dx = e.clientX - panStart.current.x;
-                  const dy = e.clientY - panStart.current.y;
-                  setPan({ x: panStart.current.px + dx, y: panStart.current.py + dy });
-                }}
-                onMouseUp={() => {
-                  setIsPanning(false);
-                  panStart.current = null;
-                }}
-                onMouseLeave={() => {
-                  setIsPanning(false);
-                  panStart.current = null;
-                }}
+                onWheel={onWheelZoom}
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={onPointerUpOrCancel}
+                onPointerCancel={onPointerUpOrCancel}
               >
                 <motion.img
                   src={current.src}
                   alt={`${title} zoomed`}
                   draggable={false}
-                  className={[
-                    "absolute left-1/2 top-1/2 select-none",
-                    isPanning ? "cursor-grabbing" : "cursor-grab",
-                  ].join(" ")}
+                  className="absolute left-1/2 top-1/2 select-none"
                   style={{
                     transform: `translate(calc(-50% + ${pan.x}px), calc(-50% + ${pan.y}px)) scale(${zoomScale})`,
-                  }}
-                  onDoubleClick={() => {
-                    setPan({ x: 0, y: 0 });
-                    setZoomScale(1);
                   }}
                 />
               </div>
