@@ -19,6 +19,7 @@ export type EducationItem = {
 
 export const experience: ExperienceItem[] = [
   {
+    id: "lunatik",
     title: "Digital Operations Assistant",
     org: "Geoff Luna Group (Independent Contractor)",
     date: "January 2026 — Present",
@@ -55,6 +56,7 @@ export const experience: ExperienceItem[] = [
     tags: ["GoHighLevel", " WAVV Dialer", "Reporting"],
   },
     {
+    id: "primof",
     title: "Student Intern",
     org: "Primof Funnel Marketing Solutions Inc.",
     date: "January 2025 — April 2025",
@@ -76,6 +78,7 @@ export const experience: ExperienceItem[] = [
     tags: ["Branding", "Print", "Slides"],
     },
   {
+    id: "aespaverse",
     title: "Founder & Creative Content Creator",
     org: "AVP - Iloilo | K-pop Fanclub",
     date: "March 2024 - Present",

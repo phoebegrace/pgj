@@ -1,26 +1,63 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { projects, type Project } from "@/content/projects";
 import ProjectModal from "./ProjectModal";
 
-const tabs: Array<Project["category"] | "All"> = ["All", "Systems", "Web", "AI", "Media"];
+const tabs: Array<Project["category"] | "All"> = [
+  "All",
+  "Systems",
+  "Web",
+  "AI",
+  "Media",
+];
+
+const experienceOptions: Array<{ id: string; label: string; title: string }> = [
+  { id: "all", label: "All experiences", title: "Projects with story-driven breakdowns" },
+  {
+    id: "lunatik",
+    label: "Lunatik / Geoff Luna Group",
+    title: "Lunatik & Geoff Luna Group Projects",
+  },
+  {
+    id: "tesda",
+    label: "TESDA Projects",
+    title: "TESDA Projects",
+  },
+  {
+    id: "hmpc",
+    label: "Hamtic Multi Purpose Cooperative Projects",
+    title: "Hamtic Multi Purpose Cooperative Projects",
+  },
+  {
+    id: "primof",
+    label: "Primof Projects",
+    title: "Primof Projects",
+  },
+  {
+    id: "personal", 
+    label: "Personal Projects",
+    title: "Personal & Creative Lab Projects",
+  },
+  {
+    id: "avp",
+    label: "AVP Iloilo Projects.",
+    title: "AVP Iloilo Projects",
+  },
+];
 
 function AutoPreview({ slides }: { slides: string[] }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (!slides?.length) return;
-    if (slides.length === 1) {
-      setIndex(0);
-      return;
-    }
+    if (!slides?.length || slides.length === 1) return;
 
-    const id = window.setInterval(() => {
+    const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000); // ⏳ slower switch (4s)
+    }, 4500);
 
-    return () => window.clearInterval(id);
+    return () => clearInterval(id);
   }, [slides]);
 
   if (!slides?.length) return null;
@@ -33,38 +70,43 @@ function AutoPreview({ slides }: { slides: string[] }) {
           src={src}
           alt=""
           className={[
-            "absolute inset-0 h-full w-full object-cover select-none",
-            "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]", // smoother easing
-            i === index
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-[1.02]", // subtle zoom out
+            "absolute inset-0 h-full w-full object-cover",
+            "transition-all duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)]",
+            i === index ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]",
           ].join(" ")}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
         />
       ))}
-
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(11,15,23,.55) 100%)",
-        }}
-      />
     </div>
   );
 }
 
-
 export default function ProjectsSection() {
+  const params = useSearchParams();
+  const expFromUrl = params.get("exp") || "all";
+
   const [active, setActive] = useState<(typeof tabs)[number]>("All");
   const [openId, setOpenId] = useState<string | null>(null);
+  const [exp, setExp] = useState<string>(expFromUrl);
+
+  useEffect(() => {
+    setExp(expFromUrl);
+  }, [expFromUrl]);
+
+  const currentExperience = experienceOptions.find((o) => o.id === exp);
 
   const filtered = useMemo(() => {
-    if (active === "All") return projects;
-    return projects.filter((p) => p.category === active);
-  }, [active]);
+    let list = projects;
+
+    if (exp !== "all") {
+      list = list.filter((p) => p.experienceIds?.includes(exp));
+    }
+
+    if (active !== "All") {
+      list = list.filter((p) => p.category === active);
+    }
+
+    return list;
+  }, [active, exp]);
 
   const selected = useMemo(
     () =>
@@ -76,25 +118,53 @@ export default function ProjectsSection() {
 
   return (
     <section id="work" className="mx-auto max-w-6xl px-6 pb-20 pt-10">
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <div className="text-sm text-white/60">Selected Work</div>
+
+          {/* ✅ Dynamic Title */}
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-            Projects with story-driven breakdowns
+            {currentExperience?.title}
           </h2>
+
           <p className="mt-2 max-w-2xl text-white/70">
             Click any project to open a glass modal with the full story, tools, and links.
           </p>
         </div>
+
+        {/* Experience Dropdown */}
+        <div className="w-full sm:w-[320px]">
+          <label className="block text-xs text-white/60 mb-2">
+            Filter by experience
+          </label>
+          <div className="relative">
+            <select
+              value={exp}
+              onChange={(e) => setExp(e.target.value)}
+              className="w-full appearance-none rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 pr-10 text-sm backdrop-blur focus:outline-none hover:bg-white/7 transition"
+            >
+              {experienceOptions.map((o) => (
+                <option key={o.id} value={o.id} className="bg-[#0b0f17]">
+                  {o.label}
+                </option>
+              ))}
+            </select>
+
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/60">
+              ▾
+            </span>
+          </div>
+        </div>
       </div>
 
+      {/* Category Pills */}
       <div className="mt-6 flex flex-wrap gap-2">
         {tabs.map((t) => (
           <button
             key={t}
             onClick={() => setActive(t)}
             className={[
-              "rounded-full px-4 py-2 text-sm backdrop-blur transition",
+              "rounded-full px-4 py-2 text-sm transition",
               t === active
                 ? "border border-white/20 bg-white/10"
                 : "border border-white/10 bg-white/5 hover:bg-white/10",
@@ -105,9 +175,9 @@ export default function ProjectsSection() {
         ))}
       </div>
 
+      {/* Grid */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((p) => {
-          // ✅ autoplay slides: prefer media images; fallback to images
           const slides =
             p.media?.filter((m) => m.type === "image").map((m) => m.src) ??
             p.images ??
@@ -117,31 +187,13 @@ export default function ProjectsSection() {
             <button
               key={p.id}
               onClick={() => setOpenId(p.id)}
-              className="group text-left rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-white/20 hover:bg-white/10"
+              className="group text-left rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-white/20 hover:bg-white/10"
             >
-              {/* ✅ Auto-rotating preview (no video badge) */}
-              {slides.length ? <AutoPreview slides={slides} /> : null}
+              {slides.length > 0 && <AutoPreview slides={slides} />}
 
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <span className="text-xs text-white/60">{p.category}</span>
-                <span className="text-xs text-white/40 transition group-hover:text-white/60">
-                  Click to open ↗
-                </span>
-              </div>
-
-              <div className="mt-3 text-lg font-semibold">{p.title}</div>
+              <div className="mt-4 text-xs text-white/60">{p.category}</div>
+              <div className="mt-2 text-lg font-semibold">{p.title}</div>
               <div className="mt-2 text-sm text-white/70">{p.oneLiner}</div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tools.slice(0, 3).map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
             </button>
           );
         })}
@@ -151,4 +203,3 @@ export default function ProjectsSection() {
     </section>
   );
 }
- 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export type CarouselMediaItem =
@@ -22,24 +22,40 @@ export default function ModalCarousel(props: Props) {
 
   const [i, setI] = useState(0);
 
-  // zoom / magnifier (images only)
+  // zoom overlay (images only)
   const [zoomOpen, setZoomOpen] = useState(false);
-  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
-  const [zoomScale, setZoomScale] = useState(2.2);
+  const [zoomScale, setZoomScale] = useState(1.8);
+
+  // pan (drag) state for zoom overlay
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const panStart = useRef<{ x: number; y: number; px: number; py: number } | null>(
+    null
+  );
 
   useEffect(() => setI(0), [title]);
-  useEffect(() => setZoomOpen(false), [i]);
+  useEffect(() => {
+    // close zoom when slide changes
+    setZoomOpen(false);
+  }, [i]);
 
-  // ESC to close zoom, lock scroll while zoomed
+  // reset pan when zoom opens / changes
+  useEffect(() => {
+    if (!zoomOpen) return;
+    setPan({ x: 0, y: 0 });
+    setZoomScale(1.8);
+  }, [zoomOpen, i, title]);
+
+  // ESC to close zoom, +/- to zoom, lock scroll while zoomed
   useEffect(() => {
     if (!zoomOpen) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setZoomOpen(false);
       if (e.key === "+" || e.key === "=")
-        setZoomScale((s) => Math.min(4, +(s + 0.4).toFixed(2)));
+        setZoomScale((s) => Math.min(5, +(s + 0.25).toFixed(2)));
       if (e.key === "-" || e.key === "_")
-        setZoomScale((s) => Math.max(1.4, +(s - 0.4).toFixed(2)));
+        setZoomScale((s) => Math.max(1, +(s - 0.25).toFixed(2)));
     };
 
     const prevOverflow = document.body.style.overflow;
@@ -59,21 +75,9 @@ export default function ModalCarousel(props: Props) {
 
   const current = items[i];
 
-  const openZoomAtClick = (e: React.MouseEvent<HTMLImageElement>) => {
+  const openZoom = () => {
     if (current.type !== "image") return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setZoomOrigin(`${x.toFixed(2)}% ${y.toFixed(2)}%`);
-    setZoomScale(2.2);
     setZoomOpen(true);
-  };
-
-  const onZoomMove = (e: React.MouseEvent<HTMLImageElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setZoomOrigin(`${x.toFixed(2)}% ${y.toFixed(2)}%`);
   };
 
   return (
@@ -91,7 +95,7 @@ export default function ModalCarousel(props: Props) {
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover cursor-zoom-in select-none"
-                onClick={openZoomAtClick}
+                onClick={openZoom}
                 initial={{ opacity: 0, x: 10, scale: 1.02 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -10, scale: 1.02 }}
@@ -145,7 +149,7 @@ export default function ModalCarousel(props: Props) {
           )}
 
           <div className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
-            {current.type === "image" ? "Click to zoom" : "Embedded video"}
+            {current.type === "image" ? "Click to zoom • Drag to pan" : "Embedded video"}
           </div>
 
           <div className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs text-white/80 backdrop-blur">
@@ -170,7 +174,7 @@ export default function ModalCarousel(props: Props) {
         )}
       </div>
 
-      {/* Zoom / Magnifier Overlay (images only) */}
+      {/* Zoom Overlay (images only) */}
       <AnimatePresence>
         {zoomOpen && current.type === "image" && (
           <motion.div
@@ -179,6 +183,7 @@ export default function ModalCarousel(props: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onMouseDown={(e) => {
+              // click outside closes
               if (e.target === e.currentTarget) setZoomOpen(false);
             }}
           >
@@ -195,15 +200,15 @@ export default function ModalCarousel(props: Props) {
                     {title}
                   </div>
                   <div className="text-xs text-white/55">
-                    Zoom: {zoomScale.toFixed(1)}× • Move your mouse to magnify •
-                    ESC to close
+                    Zoom: {zoomScale.toFixed(1)}× • Drag to pan • Scroll/pinch to zoom
+                    • Double-click to reset • ESC to close
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() =>
-                      setZoomScale((s) => Math.max(1.4, +(s - 0.4).toFixed(2)))
+                      setZoomScale((s) => Math.max(1, +(s - 0.25).toFixed(2)))
                     }
                     className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80 hover:bg-white/10 transition"
                     aria-label="Zoom out"
@@ -212,7 +217,7 @@ export default function ModalCarousel(props: Props) {
                   </button>
                   <button
                     onClick={() =>
-                      setZoomScale((s) => Math.min(4, +(s + 0.4).toFixed(2)))
+                      setZoomScale((s) => Math.min(5, +(s + 0.25).toFixed(2)))
                     }
                     className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/80 hover:bg-white/10 transition"
                     aria-label="Zoom in"
@@ -229,18 +234,52 @@ export default function ModalCarousel(props: Props) {
                 </div>
               </div>
 
-              <div className="relative aspect-video w-full">
+              {/* Pan + Zoom viewer */}
+              <div
+                className="relative aspect-video w-full overflow-hidden"
+                // IMPORTANT: make wheel zoom work
+                onWheel={(e) => {
+                  e.preventDefault();
+                  const step = e.ctrlKey ? 0.12 : 0.18; // ctrlKey often = trackpad pinch
+                  setZoomScale((s) => {
+                    const next = e.deltaY > 0 ? s - step : s + step;
+                    return Math.max(1, Math.min(5, +next.toFixed(2)));
+                  });
+                }}
+                onMouseDown={(e) => {
+                  setIsPanning(true);
+                  panStart.current = { x: e.clientX, y: e.clientY, px: pan.x, py: pan.y };
+                }}
+                onMouseMove={(e) => {
+                  if (!panStart.current) return;
+                  const dx = e.clientX - panStart.current.x;
+                  const dy = e.clientY - panStart.current.y;
+                  setPan({ x: panStart.current.px + dx, y: panStart.current.py + dy });
+                }}
+                onMouseUp={() => {
+                  setIsPanning(false);
+                  panStart.current = null;
+                }}
+                onMouseLeave={() => {
+                  setIsPanning(false);
+                  panStart.current = null;
+                }}
+              >
                 <motion.img
                   src={current.src}
                   alt={`${title} zoomed`}
                   draggable={false}
-                  className="absolute inset-0 h-full w-full select-none cursor-zoom-out object-cover"
+                  className={[
+                    "absolute left-1/2 top-1/2 select-none",
+                    isPanning ? "cursor-grabbing" : "cursor-grab",
+                  ].join(" ")}
                   style={{
-                    transformOrigin: zoomOrigin,
-                    transform: `scale(${zoomScale})`,
+                    transform: `translate(calc(-50% + ${pan.x}px), calc(-50% + ${pan.y}px)) scale(${zoomScale})`,
                   }}
-                  onMouseMove={onZoomMove}
-                  onClick={() => setZoomOpen(false)}
+                  onDoubleClick={() => {
+                    setPan({ x: 0, y: 0 });
+                    setZoomScale(1);
+                  }}
                 />
               </div>
             </motion.div>
