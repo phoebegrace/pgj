@@ -579,7 +579,7 @@ This experience strengthened both my technical and creative execution — partic
 {
   id: "zenlens",
   title: "Zenlens – AI-Based Classroom Stress Detection System",
-  category: "AI", 
+  category: "AI",
 
   oneLiner:
     "Undergraduate thesis project developing a facial emotion recognition system to estimate classroom-level stress metrics.",
@@ -618,6 +618,10 @@ The project involved dataset preprocessing, emotion classification modeling, sys
     {
       type: "image",
       src: "/images/projects/undergraduate/zenlens.png",
+    },
+    {
+      type: "embed",
+      src: "https://www.youtube.com/embed/PJGUgHMnPbw?rel=0&modestbranding=1",
     },
   ],
 
@@ -844,6 +848,50 @@ This project demonstrates foundational understanding of file system manipulation
   experienceIds: ["undergraduate"],
 },
 
+// snek game
+{
+  id: "snek-game",
+  title: "Snek — Algorithm-Based Snake Game",
+  category: "Systems",
+  oneLiner:
+    "A Python-based snake game guided by algorithmic logic and Insertion Sort implementation.",
+  overview:
+    "Snek is an undergraduate software project that simulates a snake navigating a two-dimensional board using structured algorithmic logic. The project incorporates an Insertion Sort algorithm as part of its decision-making and board management process. Developed in Python using Visual Studio Code and PyCharm Community Edition as IDEs.",
+  highlights: [
+    "Implemented algorithm-based snake navigation logic",
+    "Integrated Insertion Sort algorithm into game mechanics",
+    "Built 2D board simulation using Python",
+    "Developed and tested using VS Code and PyCharm",
+  ],
+  tools: [
+    "Python",
+    "Insertion Sort",
+    "Algorithm Design",
+    "VS Code",
+    "PyCharm",
+  ],
+
+  images: [
+    "/images/projects/undergraduate/snek.png",
+  ],
+
+  media: [
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/snek.png",
+    },
+  ],
+
+  links: [
+    {
+      label: "Project Presentation",
+      url: "https://www.canva.com/design/DAFsLb_PDoI/vsrKrBCtaj8StoaBff1dDQ/view",
+    },
+  ],
+
+  experienceIds: ["undergraduate"],
+},
+
 //combochow
 {
   id: "combochow",
@@ -948,6 +996,96 @@ Inspired by traditional mandala symbolism and personal childhood references, the
 
   experienceIds: ["undergraduate"],
 },
+
+//FREELANCE
+// baliktaay 2025
+{
+  id: "baliktaay-2025",
+  title: "Baliktaay 2025 — Grand Alumni Homecoming",
+  category: "Media",
+  oneLiner:
+    "Led creative production and event coordination for a large-scale alumni homecoming.",
+  overview:
+    "Baliktaay 2025 was a grand alumni homecoming event for Governor Julian F. Pacificador National School. The project involved full creative production — including logo design, animated slide deck visuals, event branding materials, official T-shirt design, and operational leadership as batch coordinator.",
+  highlights: [
+    "Designed official event logo and brand visuals",
+    "Prepared animated slide deck and looping presentation visuals",
+    "Created tarpaulins, photobooth layouts, banners, and print materials",
+    "Designed official event T-shirt layout",
+    "Led batch coordination including meetings, budgeting, logistics, and caravan organization",
+  ],
+  tools: [
+    "Canva",
+    "Animation Loop Design",
+    "Event Branding",
+    "Print Layout",
+    "Creative Direction",
+    "Event Coordination",
+  ],
+
+  // Card preview (first image only)
+  images: [
+    "/images/projects/personal/baliktaay/bty1.png",
+  ],
+
+  // Modal carousel (all visuals including shirt)
+  media: [
+    { type: "image", src: "/images/projects/freelance/baliktaay/bty1.png" },
+    { type: "image", src: "/images/projects/freelance/baliktaay/bty2.png" },
+    { type: "image", src: "/images/projects/freelance/baliktaay/bty3.png" },
+    { type: "image", src: "/images/projects/freelance/baliktaay/bty4.png" },
+    { type: "image", src: "/images/projects/freelance/baliktaay/gjfpns.png" }, // ✅ T-shirt added
+  ],
+
+  links: [],
+
+  experienceIds: ["freelance"], // or "personal"
+},
+
+// freelance poster designs
+{
+  id: "freelance-poster-designs",
+  title: "Freelance Poster & Marketing Designs",
+  category: "Media",
+  oneLiner:
+    "Client-based poster, tarp, menu, and social media designs delivered via Fiverr and local commissions.",
+  overview:
+    "Completed freelance graphic design projects for online and local clients, including social media postings, tarpaulin layouts, menu designs, and event posters. Worked based on client briefs and brand requirements while ensuring visual clarity, print-readiness, and commercial usability.",
+  highlights: [
+    "Designed social media marketing posts",
+    "Created tarp and large-format print layouts",
+    "Developed menu designs for commercial use",
+    "Adapted visuals to client-specific branding and requests",
+    "Delivered freelance work through Fiverr and local commissions",
+  ],
+  tools: [
+    "Canva",
+    "Typography Layout",
+    "Print Design",
+    "Client Communication",
+    "Brand Adaptation",
+  ],
+
+  // Card preview
+  images: [
+    "/images/projects/freelance/f1.png",
+  ],
+
+  // Modal carousel
+  media: [
+    { type: "image", src: "/images/projects/freelance/f1.png" },
+    { type: "image", src: "/images/projects/freelance/f2.png" },
+    { type: "image", src: "/images/projects/freelance/f3.png" },
+    { type: "image", src: "/images/projects/freelance/f4.png" },
+  ],
+
+  links: [],
+
+  experienceIds: ["freelance"],
+},
+
+
+//PERSONAL
 
 
 //yobeesaidwhat

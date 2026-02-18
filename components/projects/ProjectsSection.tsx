@@ -30,6 +30,11 @@ const experienceOptions: Array<{ id: string; label: string; title: string }> = [
     label: "TESDA Projects",
     title: "TESDA Projects",
   },
+    {
+    id: "freelance",
+    label: "Freelance Projects",
+    title: "Freelance Projects",
+  },
   {
     id: "hmpc",
     label: "Hamtic Multi Purpose Cooperative Projects",

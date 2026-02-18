@@ -16,16 +16,34 @@ import {
 } from "lucide-react";
 import Footer from "@/components/footer/Footer";
 
+// ✅ Brand logos (Simple Icons via react-icons)
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiPython,
+  SiC,
+  SiZapier,
+  SiShopify,
+  SiWordpress,
+  SiFigma,
+  SiCanva,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiAdobepremierepro,
+  SiMailchimp,
+  SiBuffer,
+  SiHootsuite,
+  SiGoogleanalytics,
+  SiOpenai,
+} from "react-icons/si";
+
+// ✅ Order matters: Platforms FIRST, then Programming
 const featuredTools = {
-  Frontend: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "Tailwind",
-  ],
   Platforms: [
     "GoHighLevel",
     "ActiveCampaign",
@@ -41,7 +59,25 @@ const featuredTools = {
     "Carrd",
     "WordPress",
   ],
-  Creative: ["Premiere Pro", "CapCut", "Canva", "Photoshop", "Illustrator", "Figma"],
+  Programming: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "C",
+    "HTML",
+    "CSS",
+    "Tailwind",
+  ],
+  Creative: [
+    "Premiere Pro",
+    "CapCut",
+    "Canva",
+    "Photoshop",
+    "Illustrator",
+    "Figma",
+  ],
   "AI & Media": [
     "RVC (Voice Training)",
     "AI Model Training",
@@ -77,46 +113,90 @@ const testimonials = [
 const TABS = Object.keys(featuredTools) as Array<keyof typeof featuredTools>;
 
 function iconForSkill(name: string) {
-  const n = name.toLowerCase();
+  const key = name.toLowerCase().trim();
+  const brand = (Icon: any) => <Icon size={18} className="text-white/85" />;
 
-  if (n.includes("next")) return <Monitor size={18} className="text-white/75" />;
-  if (n.includes("react")) return <Code2 size={18} className="text-white/75" />;
-  if (n.includes("type")) return <Code2 size={18} className="text-white/75" />;
-  if (n.includes("java")) return <Code2 size={18} className="text-white/75" />;
+  // ✅ Exact/near-exact brand logos where available
+  const map: Record<string, React.ReactNode> = {
+    // Programming
+    "next.js": brand(SiNextdotjs),
+    react: brand(SiReact),
+    typescript: brand(SiTypescript),
+    javascript: brand(SiJavascript),
+    html: brand(SiHtml5),
+    css: brand(SiCss3),
+    tailwind: brand(SiTailwindcss),
+    python: brand(SiPython),
+    c: brand(SiC),
 
-  if (n.includes("tailwind")) return <Layers size={18} className="text-white/75" />;
+    // Platforms (logos available)
+    zapier: brand(SiZapier),
+    shopify: brand(SiShopify),
+    wordpress: brand(SiWordpress),
+    "google analytics": brand(SiGoogleanalytics),
+    mailchimp: brand(SiMailchimp),
+    buffer: brand(SiBuffer),
+    hootsuite: brand(SiHootsuite),
+
+    // Creative
+    figma: brand(SiFigma),
+    canva: brand(SiCanva),
+    photoshop: brand(SiAdobephotoshop),
+    illustrator: brand(SiAdobeillustrator),
+    "premiere pro": brand(SiAdobepremierepro),
+
+    // AI
+    openai: brand(SiOpenai),
+  };
+
+  // 1) exact match
+  if (map[key]) return map[key];
+
+  // 2) contains match (for things like "RVC (Voice Training)")
+  const hit = Object.entries(map).find(([k]) => key.includes(k));
+  if (hit) return hit[1];
+
+  // 3) requested: for tools WITHOUT logos, use matching icons
+  if (key.includes("capcut")) return <Palette size={18} className="text-white/75" />;
+  if (key.includes("triplo") || key.includes("higgsfield"))
+    return <Bot size={18} className="text-white/75" />;
+
+  // 4) sensible fallbacks
+  if (key.includes("next")) return <Monitor size={18} className="text-white/75" />;
+  if (key.includes("tailwind")) return <Layers size={18} className="text-white/75" />;
 
   if (
-    n.includes("gohighlevel") ||
-    n.includes("activecampaign") ||
-    n.includes("mailchimp") ||
-    n.includes("clickfunnels")
+    key.includes("gohighlevel") ||
+    key.includes("activecampaign") ||
+    key.includes("clickfunnels") ||
+    key.includes("vistasocial") ||
+    key.includes("later") ||
+    key.includes("carrd")
   )
     return <Sparkles size={18} className="text-white/75" />;
 
   if (
-    n.includes("photoshop") ||
-    n.includes("illustrator") ||
-    n.includes("canva") ||
-    n.includes("premiere") ||
-    n.includes("capcut") ||
-    n.includes("figma")
-  )
-    return <Palette size={18} className="text-white/75" />;
-
-  if (
-    n.includes("rvc") ||
-    n.includes("eleven") ||
-    n.includes("suno") ||
-    n.includes("obs") ||
-    n.includes("openai") ||
-    n.includes("claude") ||
-    n.includes("gemini") ||
-    n.includes("sora") ||
-    n.includes("veo") ||
-    n.includes("api")
+    key.includes("rvc") ||
+    key.includes("eleven") ||
+    key.includes("suno") ||
+    key.includes("obs") ||
+    key.includes("claude") ||
+    key.includes("gemini") ||
+    key.includes("sora") ||
+    key.includes("veo") ||
+    key.includes("api") ||
+    key.includes("model")
   )
     return <Bot size={18} className="text-white/75" />;
+
+  if (
+    key.includes("photoshop") ||
+    key.includes("illustrator") ||
+    key.includes("canva") ||
+    key.includes("premiere") ||
+    key.includes("figma")
+  )
+    return <Palette size={18} className="text-white/75" />;
 
   return <Code2 size={18} className="text-white/75" />;
 }
@@ -298,6 +378,17 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      {/* ✅ scrollbar-hiding helper (local to this page) */}
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       <TooltipPortal open={tipOpen} text={tipText} anchorRect={tipRect} />
 
       {/* HERO */}
@@ -314,7 +405,10 @@ export default function Home() {
 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur">
-            <span className="h-2 w-2 rounded-full" style={{ background: "var(--pink)" }} />
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ background: "var(--pink)" }}
+            />
             Phoebe Grace Juayong
           </div>
 
@@ -354,7 +448,8 @@ export default function Home() {
           </div>
 
           <div className="mt-4 text-xs text-white/45">
-            Available for remote roles • Systems + automation builds • Premium UI delivery
+            Available for remote roles • Systems + automation builds • Premium UI
+            delivery
           </div>
         </div>
       </Section>
@@ -372,26 +467,30 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Tabs centered */}
-        <div className="mt-6 flex justify-center px-2 sm:px-0">
-          <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
-            {TABS.map((tab) => {
-              const active = tab === activeTab;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={[
-                    "rounded-xl px-5 py-2 text-sm transition",
-                    active
-                      ? "bg-black/40 text-white shadow-[0_0_0_1px_rgba(255,255,255,.08)]"
-                      : "text-white/55 hover:text-white/80",
-                  ].join(" ")}
-                >
-                  {tab}
-                </button>
-              );
-            })}
+        {/* ✅ Tabs — single row on mobile (scroll), centered on desktop */}
+        <div className="mt-6">
+          <div className="no-scrollbar overflow-x-auto sm:overflow-visible">
+            <div className="flex w-max min-w-full sm:w-full sm:min-w-0 sm:justify-center">
+              <div className="inline-flex min-w-max items-center gap-1 rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur">
+                {TABS.map((tab) => {
+                  const active = tab === activeTab;
+                  return (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={[
+                        "shrink-0 whitespace-nowrap rounded-xl px-5 py-2 text-sm transition",
+                        active
+                          ? "bg-black/40 text-white shadow-[0_0_0_1px_rgba(255,255,255,.08)]"
+                          : "text-white/55 hover:text-white/80",
+                      ].join(" ")}
+                    >
+                      {tab}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -418,7 +517,8 @@ export default function Home() {
             Testimonials
           </div>
           <p className="max-w-2xl text-[15px] sm:text-base leading-relaxed text-white/60">
-            What clients and collaborators say about working with me, my work style, and the impact of my contributions.
+            What clients and collaborators say about working with me, my work
+            style, and the impact of my contributions.
           </p>
         </div>
 
@@ -436,7 +536,9 @@ export default function Home() {
               </div>
 
               <div className="mt-6 border-t border-white/10 pt-4">
-                <div className="text-sm font-semibold text-white/90">{t.name}</div>
+                <div className="text-sm font-semibold text-white/90">
+                  {t.name}
+                </div>
                 <div className="mt-1 text-xs text-white/55">{t.role}</div>
               </div>
             </div>
