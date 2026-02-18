@@ -18,7 +18,7 @@ const experienceOptions: Array<{ id: string; label: string; title: string }> = [
   {
     id: "all",
     label: "All experiences",
-    title: "Projects with story-driven breakdowns",
+    title: "Projects",
   },
   {
     id: "lunatik",
@@ -158,8 +158,7 @@ export default function ProjectsSection() {
           </h2>
 
           <p className="mt-2 max-w-2xl text-white/70">
-            Click any project to open a glass modal with the full story, tools,
-            and links.
+            Click any project for more details.
           </p>
         </div>
 
