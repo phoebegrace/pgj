@@ -1,9 +1,12 @@
 # Phoebe Grace Juayong — Portfolio Website
 
+![Portfolio Preview](public/images/projects/personal/portfolio/p1.png)
+
 > Modern SaaS-style portfolio showcasing AI-powered systems, automation workflows, and full-stack execution.
 
 🔗 Live Site: https://pobee.space  
 📍 Designed & developed by Phoebe Grace Juayong  
+
 
 ---
 
