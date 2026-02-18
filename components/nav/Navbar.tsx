@@ -49,22 +49,15 @@ export default function Navbar() {
               "0 0 0 1px rgba(255,255,255,.05), 0 18px 60px rgba(0,0,0,.35)",
           }}
         >
-          {/* Brand */}
-          <Link href="/" className="flex items-center gap-3">
-            <div
-              className="h-9 w-9 rounded-xl border border-white/10 bg-white/5"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(124,58,237,.25), rgba(37,99,235,.18), rgba(236,72,153,.10))",
-              }}
-            />
-            <div className="leading-tight">
-              <div className="text-sm font-semibold">PGJ</div>
-              <div className="text-[11px] text-white/55">
-                Phoebe Grace Juayong
-              </div>
-            </div>
-          </Link>
+ {/* Brand */}
+<Link
+  href="/"
+  className="text-lg font-semibold tracking-tight bg-gradient-to-r from-[var(--purple)] via-[var(--blue)] to-[var(--pink)] bg-clip-text text-transparent"
+>
+  PGJ
+</Link>
+
+
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 md:flex">
