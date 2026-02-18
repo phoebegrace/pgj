@@ -1084,6 +1084,46 @@ Inspired by traditional mandala symbolism and personal childhood references, the
   experienceIds: ["freelance"],
 },
 
+// freelance ebooks
+{
+  id: "freelance-ebooks",
+  title: "Freelance E-Book Design & Production",
+  category: "Media",
+  oneLiner:
+    "Designed and structured digital e-books for client and independent publishing use.",
+  overview:
+    "Created and formatted digital e-books for freelance and independent projects, focusing on clean layout structure, typography hierarchy, readability, and professional presentation. Prepared files for digital distribution and client delivery.",
+  highlights: [
+    "Designed structured e-book layouts",
+    "Applied typography hierarchy for readability",
+    "Formatted content for digital distribution",
+    "Delivered client-ready production files",
+  ],
+  tools: [
+    "Canva",
+    "Typography Layout",
+    "Digital Publishing",
+    "Content Structuring",
+  ],
+
+  // Card preview
+  images: [
+    "/images/projects/freelance/e.png",
+  ],
+
+  // Modal media
+  media: [
+    {
+      type: "image",
+      src: "/images/projects/freelance/e.png",
+    },
+  ],
+
+  links: [],
+
+  experienceIds: ["freelance"],
+},
+
 
 //PERSONAL
 
