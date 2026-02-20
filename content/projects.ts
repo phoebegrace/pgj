@@ -92,217 +92,40 @@ The carousel visually reflects my progression across versions — from early sta
   experienceIds: ["personal"],
 },
 
-// tech20
+// gradleis social ads
 {
-  id: "tech20",
-  title: "TECH20 Website",
-  category: "Web",
+  id: "gradleis-social-ads",
+  title: "Social Media Ads & Reels",
+  category: "Media",
   oneLiner:
-    "Modernized TECH20’s site with structured layout and premium UI updates.",
+    "Created structured social media ads and short-form reels for campaigns.",
   overview:
-    "Refined layout architecture, improved hierarchy, and strengthened messaging clarity while maintaining conversion-focused structure.",
+    "Produced social media ad creatives and short-form reels. Focused on clean visual structure, strong hooks, and platform-optimized formatting for both paid and organic distribution.",
   highlights: [
-    "Reworked layout architecture and section flow",
-    "Improved CTA placement and messaging hierarchy",
-    "Built responsive premium UI sections",
+    "Designed and edited short-form social media reels",
+    "Created ad creatives aligned with campaign branding",
+    "Structured visuals for engagement and conversion",
+    "Maintained clean and consistent brand presentation",
   ],
-  tools: ["GoHighLevel", "Custom HTML/CSS", "Gemini AI for image generation"],
-  images: [
-    "/images/projects/geoffluna/tech20/t20.png",
-  ],
-  media: [
-    { type: "image", src: "/images/projects/geoffluna/tech20/t20.png" },
-  ],
-  links: [],
-  experienceIds: ["lunatik"],
-},
-
-// coast2coast
-{
-  id: "coast2coast",
-  title: "Coast2Coast Funnel",
-  category: "Systems",
-  oneLiner:
-    "Lead capture funnel built with structured narrative and automation-ready flow.",
-  overview:
-    "Developed a structured opt-in funnel focused on pain-to-possibility storytelling, conversion clarity, and CRM-ready workflow integration.",
-  highlights: [
-    "Conversion-first landing structure",
-    "Narrative-based messaging flow",
-    "Automation-ready architecture",
-  ],
-  tools: ["GoHighLevel", "Canva", "Custom HTML/CSS"],
-  images: [
-    "/images/projects/geoffluna/coast2coast/c2c.png",
-  ],
-  media: [
-    { type: "image", src: "/images/projects/geoffluna/coast2coast/c2c.png" },
-  ],
-  links: [],
-  experienceIds: ["lunatik"],
-},
-
-// discoversouthern
-{
-  id: "discoversouthern",
-  title: "Discover Southern California",
-  category: "Web",
-
-  oneLiner:
-    "Led website rebranding and platform migration to GoHighLevel to modernize structure and unify marketing systems.",
-
-  overview: `This project focused on rebranding and restructuring the existing Discover Southern California website while migrating it from its previous platform into GoHighLevel (GHL).
-
-The objective was not only visual refinement but full platform consolidation — aligning the website with the client's marketing automation ecosystem inside GHL. I rebuilt sections using custom HTML/CSS, improved layout hierarchy, and modernized the design system to enhance brand authority and clarity.
-
-Beyond design updates, the migration ensured smoother integration with CRM workflows, lead capture forms, and future automation scaling. The result was a more cohesive, conversion-ready website aligned with the client’s long-term digital strategy.`,
-
-  highlights: [
-    "Rebranded and modernized legacy website design",
-    "Migrated site from previous platform to GoHighLevel",
-    "Rebuilt layouts using custom HTML/CSS inside GHL",
-    "Improved section hierarchy and content clarity",
-    "Ensured CRM and lead capture integration compatibility",
-    "Maintained full responsive behavior across devices",
-  ],
-
   tools: [
-    "GoHighLevel",
-    "Custom HTML/CSS",
-    "Platform Migration",
-    "Responsive Design",
-    "CRM Integration",
+    "Canva",
+    "CapCut",
+    "Short-Form Video Editing",
   ],
 
   images: [
-    "/images/projects/geoffluna/discoversouthernca/dsca.png",
+    "/images/projects/geoffluna/gradleis/gd.png",
+    "/images/projects/geoffluna/gradleis/gd2.png",
   ],
 
   media: [
     {
       type: "image",
-      src: "/images/projects/geoffluna/discoversouthernca/dsca.png",
+      src: "/images/projects/geoffluna/gradleis/gd.png",
     },
-  ],
-
-  links: [],
-
-  experienceIds: ["lunatik"],
-},
-
-
-// lunatik
-{
-  id: "lunatik",
-  title: "Lunatik Marketing Agency",
-  category: "Web",
-  oneLiner:
-    "Agency site redesign emphasizing authority and structured service presentation.",
-  overview:
-    "Reworked layout structure and service presentation to improve clarity, offer positioning, and premium visual rhythm.",
-  highlights: [
-    "Clear service positioning",
-    "Improved visual rhythm and spacing",
-    "Authority-driven layout structure",
-  ],
-  tools: ["GoHighLevel", "Brand Structuring", "Custom Sections"],
-  images: [
-    "/images/projects/geoffluna/lunatik/lunat.png",
-  ],
-  media: [
-    { type: "image", src: "/images/projects/geoffluna/lunatik/lunat.png" },
-  ],
-  links: [],
-  experienceIds: ["lunatik"],
-},
-
-// merrylonmain
-{
-  id: "merrylonmain",
-  title: "Business Meetup Funnel Page",
-  category: "Web",
-
-  oneLiner:
-    "Designed and built a brand-aligned funnel page for a business meetup invitation and RSVP flow.",
-
-  overview: `Developed a structured funnel page for a business meetup event, designed to reflect the client's brand identity while clearly communicating event details and objectives.
-
-The page was built inside GoHighLevel using custom HTML/CSS to ensure layout precision, clean spacing, and professional visual hierarchy. Emphasis was placed on clarity — guiding visitors through the event overview, key information, and RSVP action without friction.
-
-The structure was optimized for readability, credibility, and mobile responsiveness to ensure a seamless experience across devices while supporting registration and follow-up workflows within the GHL system.`,
-
-  highlights: [
-    "Built brand-aligned event invitation funnel",
-    "Structured section flow for clarity and credibility",
-    "Integrated RSVP / registration flow inside GHL",
-    "Implemented custom HTML/CSS for layout precision",
-    "Ensured responsive design across devices",
-    "Aligned page structure with event communication goals",
-  ],
-
-  tools: [
-    "GoHighLevel",
-    "Custom HTML/CSS",
-    "Event Funnel Structuring",
-    "RSVP Integration",
-  ],
-
-  images: [
-    "/images/projects/geoffluna/merrylonmain/mom.png",
-  ],
-
-  media: [
     {
       type: "image",
-      src: "/images/projects/geoffluna/merrylonmain/mom.png",
-    },
-  ],
-
-  links: [],
-
-  experienceIds: ["lunatik"],
-},
-
-
-// ncrea
-{
-  id: "ncrea-course",
-  title: "NCREA Course",
-  category: "Systems",
-
-  oneLiner:
-    "Migrated and restructured a full course system into the client’s GoHighLevel agency account with enhanced visual and content presentation.",
-
-  overview: `This project involved transferring an existing course from a separate GoHighLevel account into the client’s agency-level GHL environment.
-
-Beyond migration, I redesigned course thumbnails, reuploaded and organized learning materials, and enhanced captions and descriptions for improved clarity and professionalism. The objective was to ensure the course structure aligned with the client’s branding while improving content readability and learner experience.
-
-The process required careful asset management, structured content hierarchy, and system-level organization within GHL’s course framework to maintain functionality while upgrading presentation quality.`,
-
-  highlights: [
-    "Migrated full course system between GHL accounts",
-    "Reuploaded and structured course materials",
-    "Redesigned course thumbnails for brand consistency",
-    "Enhanced captions and descriptions for clarity",
-    "Improved course hierarchy and learner navigation",
-    "Ensured functionality within client’s agency-level GHL setup",
-  ],
-
-  tools: [
-    "GoHighLevel",
-    "Course Migration",
-    "Thumbnail Design",
-    "UI Hierarchy",
-  ],
-
-  images: [
-    "/images/projects/geoffluna/ncrea/course.png",
-  ],
-
-  media: [
-    {
-      type: "image",
-      src: "/images/projects/geoffluna/ncrea/course.png",
+      src: "/images/projects/geoffluna/gradleis/gd2.png",
     },
   ],
 
@@ -1541,6 +1364,223 @@ Built using HTML, CSS, and JavaScript, the project explores structured UI layout
   experienceIds: ["personal"],
 },
 
+// tech20
+{
+  id: "tech20",
+  title: "TECH20 Website",
+  category: "Web",
+  oneLiner:
+    "Modernized TECH20’s site with structured layout and premium UI updates.",
+  overview:
+    "Refined layout architecture, improved hierarchy, and strengthened messaging clarity while maintaining conversion-focused structure.",
+  highlights: [
+    "Reworked layout architecture and section flow",
+    "Improved CTA placement and messaging hierarchy",
+    "Built responsive premium UI sections",
+  ],
+  tools: ["GoHighLevel", "Custom HTML/CSS", "Gemini AI for image generation"],
+  images: [
+    "/images/projects/geoffluna/tech20/t20.png",
+  ],
+  media: [
+    { type: "image", src: "/images/projects/geoffluna/tech20/t20.png" },
+  ],
+  links: [],
+  experienceIds: ["lunatik"],
+},
 
+// coast2coast
+{
+  id: "coast2coast",
+  title: "Coast2Coast Funnel",
+  category: "Systems",
+  oneLiner:
+    "Lead capture funnel built with structured narrative and automation-ready flow.",
+  overview:
+    "Developed a structured opt-in funnel focused on pain-to-possibility storytelling, conversion clarity, and CRM-ready workflow integration.",
+  highlights: [
+    "Conversion-first landing structure",
+    "Narrative-based messaging flow",
+    "Automation-ready architecture",
+  ],
+  tools: ["GoHighLevel", "Canva", "Custom HTML/CSS"],
+  images: [
+    "/images/projects/geoffluna/coast2coast/c2c.png",
+  ],
+  media: [
+    { type: "image", src: "/images/projects/geoffluna/coast2coast/c2c.png" },
+  ],
+  links: [],
+  experienceIds: ["lunatik"],
+},
+
+// discoversouthern
+{
+  id: "discoversouthern",
+  title: "Discover Southern California",
+  category: "Web",
+
+  oneLiner:
+    "Led website rebranding and platform migration to GoHighLevel to modernize structure and unify marketing systems.",
+
+  overview: `This project focused on rebranding and restructuring the existing Discover Southern California website while migrating it from its previous platform into GoHighLevel (GHL).
+
+The objective was not only visual refinement but full platform consolidation — aligning the website with the client's marketing automation ecosystem inside GHL. I rebuilt sections using custom HTML/CSS, improved layout hierarchy, and modernized the design system to enhance brand authority and clarity.
+
+Beyond design updates, the migration ensured smoother integration with CRM workflows, lead capture forms, and future automation scaling. The result was a more cohesive, conversion-ready website aligned with the client’s long-term digital strategy.`,
+
+  highlights: [
+    "Rebranded and modernized legacy website design",
+    "Migrated site from previous platform to GoHighLevel",
+    "Rebuilt layouts using custom HTML/CSS inside GHL",
+    "Improved section hierarchy and content clarity",
+    "Ensured CRM and lead capture integration compatibility",
+    "Maintained full responsive behavior across devices",
+  ],
+
+  tools: [
+    "GoHighLevel",
+    "Custom HTML/CSS",
+    "Platform Migration",
+    "Responsive Design",
+    "CRM Integration",
+  ],
+
+  images: [
+    "/images/projects/geoffluna/discoversouthernca/dsca.png",
+  ],
+
+  media: [
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/discoversouthernca/dsca.png",
+    },
+  ],
+
+  links: [],
+
+  experienceIds: ["lunatik"],
+},
+
+
+// lunatik
+{
+  id: "lunatik",
+  title: "Lunatik Marketing Agency",
+  category: "Web",
+  oneLiner:
+    "Agency site redesign emphasizing authority and structured service presentation.",
+  overview:
+    "Reworked layout structure and service presentation to improve clarity, offer positioning, and premium visual rhythm.",
+  highlights: [
+    "Clear service positioning",
+    "Improved visual rhythm and spacing",
+    "Authority-driven layout structure",
+  ],
+  tools: ["GoHighLevel", "Brand Structuring", "Custom Sections"],
+  images: [
+    "/images/projects/geoffluna/lunatik/lunat.png",
+  ],
+  media: [
+    { type: "image", src: "/images/projects/geoffluna/lunatik/lunat.png" },
+  ],
+  links: [],
+  experienceIds: ["lunatik"],
+},
+
+// // merrylonmain
+// {
+//   id: "merrylonmain",
+//   title: "Business Meetup Funnel Page",
+//   category: "Web",
+
+//   oneLiner:
+//     "Designed and built a brand-aligned funnel page for a business meetup invitation and RSVP flow.",
+
+//   overview: `Developed a structured funnel page for a business meetup event, designed to reflect the client's brand identity while clearly communicating event details and objectives.
+
+// The page was built inside GoHighLevel using custom HTML/CSS to ensure layout precision, clean spacing, and professional visual hierarchy. Emphasis was placed on clarity — guiding visitors through the event overview, key information, and RSVP action without friction.
+
+// The structure was optimized for readability, credibility, and mobile responsiveness to ensure a seamless experience across devices while supporting registration and follow-up workflows within the GHL system.`,
+
+//   highlights: [
+//     "Built brand-aligned event invitation funnel",
+//     "Structured section flow for clarity and credibility",
+//     "Integrated RSVP / registration flow inside GHL",
+//     "Implemented custom HTML/CSS for layout precision",
+//     "Ensured responsive design across devices",
+//     "Aligned page structure with event communication goals",
+//   ],
+
+//   tools: [
+//     "GoHighLevel",
+//     "Custom HTML/CSS",
+//     "Event Funnel Structuring",
+//     "RSVP Integration",
+//   ],
+
+//   images: [
+//     "/images/projects/geoffluna/merrylonmain/mom.png",
+//   ],
+
+//   media: [
+//     {
+//       type: "image",
+//       src: "/images/projects/geoffluna/merrylonmain/mom.png",
+//     },
+//   ],
+
+//   links: [],
+
+//   experienceIds: ["lunatik"],
+// },
+
+
+// // ncrea
+// {
+//   id: "ncrea-course",
+//   title: "NCREA Course",
+//   category: "Systems",
+
+//   oneLiner:
+//     "Migrated and restructured a full course system into the client’s GoHighLevel agency account with enhanced visual and content presentation.",
+
+//   overview: `This project involved transferring an existing course from a separate GoHighLevel account into the client’s agency-level GHL environment.
+
+// Beyond migration, I redesigned course thumbnails, reuploaded and organized learning materials, and enhanced captions and descriptions for improved clarity and professionalism. The objective was to ensure the course structure aligned with the client’s branding while improving content readability and learner experience.
+
+// The process required careful asset management, structured content hierarchy, and system-level organization within GHL’s course framework to maintain functionality while upgrading presentation quality.`,
+
+//   highlights: [
+//     "Migrated full course system between GHL accounts",
+//     "Reuploaded and structured course materials",
+//     "Redesigned course thumbnails for brand consistency",
+//     "Enhanced captions and descriptions for clarity",
+//     "Improved course hierarchy and learner navigation",
+//     "Ensured functionality within client’s agency-level GHL setup",
+//   ],
+
+//   tools: [
+//     "GoHighLevel",
+//     "Course Migration",
+//     "Thumbnail Design",
+//     "UI Hierarchy",
+//   ],
+
+//   images: [
+//     "/images/projects/geoffluna/ncrea/course.png",
+//   ],
+
+//   media: [
+//     {
+//       type: "image",
+//       src: "/images/projects/geoffluna/ncrea/course.png",
+//     },
+//   ],
+
+//   links: [],
+
+//   experienceIds: ["lunatik"],
+// },
 
 ];
