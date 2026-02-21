@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PGJ Portfolio",
-  description: "i'm so pretty",
+  description: "Work and experience portfolio of Phoebe Grace Juayong",
 };
 
 export default function RootLayout({
