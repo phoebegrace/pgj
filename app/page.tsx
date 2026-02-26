@@ -438,7 +438,7 @@ export default function Home() {
             </Link>
 
             <a
-              href="/Phoebe-Grace-Juayong-Resume.pdf"
+              href="/JuayongResume.pdf"
               download
               className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/85 backdrop-blur transition hover:bg-white/10"
             >
