@@ -22,8 +22,8 @@ const experienceOptions: Array<{ id: string; label: string; title: string }> = [
   },
   {
     id: "lunatik",
-    label: "Lunatik / Geoff Luna Group",
-    title: "Lunatik & Geoff Luna Group Projects",
+    label: "Digital Operations",
+    title: "Digital Operations Projects",
   },
   {
     id: "tesda",
