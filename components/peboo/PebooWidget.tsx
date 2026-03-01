@@ -4,32 +4,31 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PebooIcon from "./PebooIcon";
 
-
 type Msg = { role: "peboo" | "user"; text: string };
 
 const pebooHello =
-  "Hi, I’m Peboo. I can help you explore Phoebe Grace Juayong’s projects, systems, and technical work. What would you like to know?";
+  "Hi, I’m Peboo. I can help you explore Phoebe’s GoHighLevel systems, AI tools/workflows, web development, and creative design work. What do you want to see?";
 
 const quickPrompts = [
-  "Show flagship projects",
-  "What systems has Phoebe built?",
-  "What tools does she use?",
+  "Show GoHighLevel systems Phoebe builds",
+  "What AI tools/workflows does she use?",
+  "What web dev stack does she use?",
+  "Show creative design work / assets",
   "How can I contact Phoebe?",
 ];
 
 export default function PebooWidget() {
-    const [showHint, setShowHint] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([{ role: "peboo", text: pebooHello }]);
   const [loading, setLoading] = useState(false);
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  const isAboutPhoebe = useMemo(() => {
-    // we keep this as a strict scope signal; actual enforcement happens server-side too.
-    return true;
-  }, []);
+  // strict scope signal; actual enforcement should still happen server-side
+  const scope = useMemo(() => "phoebe_only" as const, []);
 
+  // auto-scroll to newest messages when open
   useEffect(() => {
     if (!open) return;
     requestAnimationFrame(() => {
@@ -40,17 +39,18 @@ export default function PebooWidget() {
     });
   }, [open, msgs, loading]);
 
+  // hint bubble (only once per session)
   useEffect(() => {
-  const hasSeen = sessionStorage.getItem("peboo_hint_seen");
-  if (!hasSeen) {
-    const timer = setTimeout(() => {
-      setShowHint(true);
-    }, 2000); // appears after 2s
-
-    return () => clearTimeout(timer);
-  }
-}, []);
-
+    try {
+      const hasSeen = sessionStorage.getItem("peboo_hint_seen");
+      if (!hasSeen) {
+        const timer = window.setTimeout(() => setShowHint(true), 2000);
+        return () => window.clearTimeout(timer);
+      }
+    } catch {
+      // ignore sessionStorage errors (private mode / blocked)
+    }
+  }, []);
 
   const respond = async (userText: string) => {
     try {
@@ -61,8 +61,8 @@ export default function PebooWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: userText,
-          history: msgs, // send history for context
-          scope: isAboutPhoebe ? "phoebe_only" : "general",
+          history: msgs,
+          scope,
         }),
       });
 
@@ -70,7 +70,12 @@ export default function PebooWidget() {
 
       setMsgs((m) => [
         ...m,
-        { role: "peboo", text: data?.reply || "Can you rephrase that?" },
+        {
+          role: "peboo",
+          text:
+            data?.reply ||
+            "I didn’t catch that—try asking about GoHighLevel, AI tools, web dev, or design work.",
+        },
       ]);
     } catch {
       setMsgs((m) => [
@@ -92,37 +97,50 @@ export default function PebooWidget() {
     await respond(value);
   };
 
+  const openPeboo = () => {
+    setOpen(true);
+    setShowHint(false);
+    try {
+      sessionStorage.setItem("peboo_hint_seen", "true");
+    } catch {
+      // ignore
+    }
+  };
+
+  const closePeboo = () => setOpen(false);
+
+  const resetChat = () => {
+    if (loading) return;
+    setMsgs([{ role: "peboo", text: pebooHello }]);
+    setInput("");
+  };
+
   return (
-
-    
     <>
+      {showHint && !open && (
+        <div className="fixed bottom-24 right-6 z-[9996] animate-fadeInUp">
+          <div className="relative rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white/85 backdrop-blur shadow-[0_20px_60px_rgba(0,0,0,.45)]">
+            Have questions about Phoebe?{" "}
+            <span className="font-medium">Ask Peboo.</span>
 
-    {showHint && !open && (
-  <div
-    className="fixed bottom-24 right-6 z-[9996] animate-fadeInUp"
-  >
-    <div className="relative rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white/85 backdrop-blur shadow-[0_20px_60px_rgba(0,0,0,.45)]">
-      Have questions about Phoebe? <span className="font-medium">Ask Peboo.</span>
-
-      {/* little arrow */}
-      <div className="absolute -bottom-2 right-6 h-4 w-4 rotate-45 border-r border-b border-white/10 bg-white/10 backdrop-blur" />
-    </div>
-  </div>
-)}
+            {/* little arrow */}
+            <div className="absolute -bottom-2 right-6 h-4 w-4 rotate-45 border-r border-b border-white/10 bg-white/10 backdrop-blur" />
+          </div>
+        </div>
+      )}
 
       {/* Floating button */}
       <button
         onClick={() => {
-  setOpen(true);
-  setShowHint(false);
-  sessionStorage.setItem("peboo_hint_seen", "true");
-}}
+          if (open) closePeboo();
+          else openPeboo();
+        }}
         className="fixed bottom-6 right-6 z-[9997] flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-sm font-medium text-white/85 backdrop-blur hover:bg-white/10 transition"
         style={{
           boxShadow:
             "0 0 0 1px rgba(255,255,255,.06), 0 18px 60px rgba(0,0,0,.55)",
         }}
-        aria-label="Open Peboo"
+        aria-label={open ? "Close Peboo" : "Open Peboo"}
       >
         <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30">
           <PebooIcon size={20} />
@@ -143,7 +161,7 @@ export default function PebooWidget() {
             <button
               type="button"
               className="absolute inset-0 bg-black/60"
-              onClick={() => setOpen(false)}
+              onClick={closePeboo}
               aria-label="Close Peboo overlay"
             />
 
@@ -159,6 +177,9 @@ export default function PebooWidget() {
                   "0 0 0 1px rgba(255,255,255,.06), 0 26px 80px rgba(0,0,0,.60)",
               }}
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Peboo chat"
             >
               {/* gradient stroke */}
               <div
@@ -178,21 +199,31 @@ export default function PebooWidget() {
               <div className="flex items-start justify-between gap-3 p-4">
                 <div className="flex items-start gap-3">
                   <PebooIcon size={32} />
-
                   <div>
-                    <div className="text-sm font-semibold text-white">
-                      Peboo
+                    <div className="text-sm font-semibold text-white">Peboo</div>
+                    <div className="text-xs text-white/60">
+                      GHL • AI • Web Dev • Design
                     </div>
-                    <div className="text-xs text-white/60">AI Systems Guide</div>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => setOpen(false)}
-                  className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
-                >
-                  Close
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={resetChat}
+                    className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition disabled:opacity-50"
+                    disabled={loading}
+                    aria-label="Reset chat"
+                  >
+                    Reset
+                  </button>
+                  <button
+                    onClick={closePeboo}
+                    className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+                    aria-label="Close chat"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
 
               {/* messages */}
@@ -249,7 +280,7 @@ export default function PebooWidget() {
                         send();
                       }
                     }}
-                    placeholder="Ask about Phoebe’s work…"
+                    placeholder="Ask about GoHighLevel, AI tools, web dev, or design…"
                     className="w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/90 placeholder:text-white/40 outline-none focus:border-white/20"
                     disabled={loading}
                   />

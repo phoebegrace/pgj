@@ -67,7 +67,7 @@ export const KB: KBItem[] = [
     title: "Tools & Technology Stack",
     tags: ["tools", "stack", "software", "platforms"],
     content:
-      "Core tools include GoHighLevel, ActiveCampaign, Mailchimp, ClickFunnels, Zapier, React, Next.js, TypeScript, Tailwind CSS, Git/GitHub, Canva, Adobe tools, CapCut, OBS, ElevenLabs, and AI-powered creative platforms.",
+      "Core tools include GoHighLevel, ActiveCampaign, Mailchimp, ClickFunnels, Zapier, React, Next.js, TypeScript, Tailwind CSS, Git/GitHub, Canva, Adobe tools, CapCut, OBS, Veo, Kling, ElevenLabs, and AI-powered creative platforms.",
   },
 
   {
