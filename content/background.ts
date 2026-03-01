@@ -21,7 +21,7 @@ export const experience: ExperienceItem[] = [
   {
     id: "lunatik",
     title: "Digital Operations Assistant",
-    org: "Geoff Luna Group (Independent Contractor)",
+    org: "(Independent Contractor)",
     date: "January 2026 — Present",
     bullets: [
       "Built and optimized funnel pages and websites for marketing and course-based campaigns.",
