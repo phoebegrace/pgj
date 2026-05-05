@@ -19,6 +19,28 @@ export type EducationItem = {
 
 export const experience: ExperienceItem[] = [
   {
+  id: "ai-content-creation",
+  title: "AI Content Creator (Short-Form Video Systems)",
+  org: "Independent / Personal Projects",
+  date: "March 2025 — Present",
+  bullets: [
+    "Developed AI-driven short-form video content using multi-tool pipelines (Google Veo, Kling AI, ChatGPT, CapCut).",
+    "Built structured workflows for concept ideation, script generation, AI visual production, and final editing.",
+    "Produced and tested content across platforms (Instagram Reels, TikTok, YouTube Shorts) for engagement optimization.",
+    "Explored scalable AI content systems and automation strategies for consistent output.",
+  ],
+  tags: [
+    "AI Content",
+    "Short-Form Video",
+    "Google Veo",
+    "Kling AI",
+    "ChatGPT",
+    "CapCut",
+    "Content Systems",
+    "Automation",
+  ],
+},
+  {
     id: "lunatik",
     title: "Digital Operations Assistant",
     org: "(Independent Contractor)",
