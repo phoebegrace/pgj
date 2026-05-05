@@ -208,7 +208,7 @@ This work highlights my ability to not just use AI tools individually, but to in
     },
   ],
 
-  experienceIds: ["personal"],
+  experienceIds: ["ai-content-creation"],
 },
 
 // gradleis social ads
