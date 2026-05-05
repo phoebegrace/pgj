@@ -204,7 +204,7 @@ This work highlights my ability to not just use AI tools individually, but to in
   links: [
     {
       label: "Instagram Reels Collection",
-      url: "https://www.instagram.com/",
+      url: "https://www.instagram.com/wellnessmaddie1/reels/"
     },
   ],
 
