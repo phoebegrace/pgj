@@ -92,6 +92,125 @@ The carousel visually reflects my progression across versions — from early sta
   experienceIds: ["personal"],
 },
 
+
+
+//maddie
+{
+  id: "maddie-ai-influencer",
+  title: "Maddie — AI Influencer Content System",
+  category: "AI",
+
+  oneLiner:
+    "Built an AI-generated influencer persona producing high-performing short-form video content using a multi-tool creative pipeline.",
+
+  overview: `Maddie is an AI-generated influencer project focused on short-form video content creation using a structured multi-tool workflow.
+
+The project combines Google Veo Flow for scene generation, Kling AI for motion rendering, ChatGPT for scripting and content direction, and CapCut for final editing and post-production. The goal was to simulate a consistent digital persona capable of producing engaging, algorithm-optimized content for platforms like Instagram Reels.
+
+Each video follows a systemized pipeline — from concept ideation and script generation to AI visual production, motion refinement, and final editing. The project explores how AI tools can be orchestrated into a repeatable content engine for influencer-style media.
+
+This work highlights my ability to not just use AI tools individually, but to integrate them into a cohesive production system for scalable content creation.`,
+
+  highlights: [
+    "Developed AI-generated influencer persona (Maddie)",
+    "Built multi-step AI content production workflow",
+    "Used Google Veo Flow for scene generation",
+    "Applied Kling AI for motion and animation",
+    "Generated scripts and concepts using ChatGPT",
+    "Edited and finalized videos in CapCut",
+    "Produced multiple Instagram Reels for testing engagement",
+    "Explored AI-driven content scalability and consistency",
+  ],
+
+  tools: [
+    "Google Veo",
+    "Kling AI",
+    "ChatGPT",
+    "CapCut",
+    "AI Video Generation",
+    "Short-Form Content Systems",
+    "Content Strategy",
+  ],
+
+  // thumbnail (you can replace later)
+  images: [
+    "/images/projects/personal/maddie/maddie.png",
+  ],
+
+  media: [
+    {
+      type: "image",
+      src: "/images/projects/personal/maddie/maddie.png",
+    },
+
+    // Instagram embeds
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DV_OCI8EV88/embed",
+      title: "Maddie Reel 1",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DWXO5XlknpP/embed",
+      title: "Maddie Reel 2",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DW1hWd5kWrt/embed",
+      title: "Maddie Reel 3",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DW9CVcAEVSB/embed",
+      title: "Maddie Reel 4",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXC0SauErez/embed",
+      title: "Maddie Reel 5",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXK6FrOEqJN/embed",
+      title: "Maddie Reel 6",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXUwYCJEm6m/embed",
+      title: "Maddie Reel 7",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXb7leGjbq4/embed",
+      title: "Maddie Reel 8",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXpWvhdkiAb/embed",
+      title: "Maddie Reel 9",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXsBaVXEvB1/embed",
+      title: "Maddie Reel 10",
+    },
+    {
+      type: "embed",
+      src: "https://www.instagram.com/reel/DXxmmBwSOtq/embed",
+      title: "Maddie Reel 11",
+    },
+  ],
+
+  links: [
+    {
+      label: "Instagram Reels Collection",
+      url: "https://www.instagram.com/",
+    },
+  ],
+
+  experienceIds: ["personal"],
+},
+
 // gradleis social ads
 {
   id: "gradleis-social-ads",
