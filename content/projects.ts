@@ -518,6 +518,7 @@ This experience strengthened both my technical and creative execution — partic
 //UNDERGRADUATE
 
 // zenlens
+// zenlens
 {
   id: "zenlens",
   title: "Zenlens – AI-Based Classroom Stress Detection System",
@@ -553,17 +554,91 @@ The project involved dataset preprocessing, emotion classification modeling, sys
   ],
 
   images: [
-    "/images/projects/undergraduate/zenlens.png",
+    "/images/projects/undergraduate/zenlens/analysis page.png",
+    "/images/projects/undergraduate/zenlens/change password.png",
+    "/images/projects/undergraduate/zenlens/create acc.png",
+    "/images/projects/undergraduate/zenlens/history page.png",
+    "/images/projects/undergraduate/zenlens/homepage.png",
+    "/images/projects/undergraduate/zenlens/insights-daily-modal.png",
+    "/images/projects/undergraduate/zenlens/insights-daily.png",
+    "/images/projects/undergraduate/zenlens/insights-weekly-modal.png",
+    "/images/projects/undergraduate/zenlens/insights-weekly.png",
+    "/images/projects/undergraduate/zenlens/log in.png",
+    "/images/projects/undergraduate/zenlens/reset password page.png",
+    "/images/projects/undergraduate/zenlens/result.png",
+    "/images/projects/undergraduate/zenlens/running analysis.png",
   ],
 
   media: [
     {
       type: "image",
-      src: "/images/projects/undergraduate/zenlens.png",
+      src: "/images/projects/undergraduate/zenlens/analysis page.png",
+      title: "Analysis Page",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/change password.png",
+      title: "Change Password",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/create acc.png",
+      title: "Create Account",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/history page.png",
+      title: "History Page",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/homepage.png",
+      title: "Homepage",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/insights-daily-modal.png",
+      title: "Daily Insights Modal",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/insights-daily.png",
+      title: "Daily Insights",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/insights-weekly-modal.png",
+      title: "Weekly Insights Modal",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/insights-weekly.png",
+      title: "Weekly Insights",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/log in.png",
+      title: "Login Page",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/reset password page.png",
+      title: "Reset Password",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/result.png",
+      title: "Result",
+    },
+    {
+      type: "image",
+      src: "/images/projects/undergraduate/zenlens/running analysis.png",
+      title: "Running Analysis",
     },
     {
       type: "embed",
       src: "https://www.youtube.com/embed/PJGUgHMnPbw?rel=0&modestbranding=1",
+      title: "Zenlens Project Demo",
     },
   ],
 
@@ -1508,75 +1583,110 @@ Built using HTML, CSS, and JavaScript, the project explores structured UI layout
   experienceIds: ["lunatik"],
 },
 
-// coast2coast
+// eastpoint properties
 {
-  id: "coast2coast",
-  title: "Coast2Coast Funnel",
+  id: "eastpoint-properties",
+  title: "EastPoint Properties",
   category: "Systems",
+
   oneLiner:
-    "Lead capture funnel built with structured narrative and automation-ready flow.",
+    "Built a conversion-focused lead generation funnel for a real estate investment company.",
+
   overview:
-    "Developed a structured opt-in funnel focused on pain-to-possibility storytelling, conversion clarity, and CRM-ready workflow integration.",
-  highlights: [
-    "Conversion-first landing structure",
-    "Narrative-based messaging flow",
-    "Automation-ready architecture",
-  ],
-  tools: ["GoHighLevel", "Canva", "Custom HTML/CSS"],
-  images: [
-    "/images/projects/geoffluna/coast2coast/c2c.png",
-  ],
-  media: [
-    { type: "image", src: "/images/projects/geoffluna/coast2coast/c2c.png" },
-  ],
-  links: [],
-  experienceIds: ["lunatik"],
-},
-
-// discoversouthern
-{
-  id: "discoversouthern",
-  title: "Discover Southern California",
-  category: "Web",
-
-  oneLiner:
-    "Led website rebranding and platform migration to GoHighLevel to modernize structure and unify marketing systems.",
-
-  overview: `This project focused on rebranding and restructuring the existing Discover Southern California website while migrating it from its previous platform into GoHighLevel (GHL).
-
-The objective was not only visual refinement but full platform consolidation — aligning the website with the client's marketing automation ecosystem inside GHL. I rebuilt sections using custom HTML/CSS, improved layout hierarchy, and modernized the design system to enhance brand authority and clarity.
-
-Beyond design updates, the migration ensured smoother integration with CRM workflows, lead capture forms, and future automation scaling. The result was a more cohesive, conversion-ready website aligned with the client’s long-term digital strategy.`,
+    "Developed a structured lead generation funnel for EastPoint Properties focused on guiding visitors through a clear offer and inquiry flow. The project emphasized conversion-focused messaging, clean visual hierarchy, mobile responsiveness, and CRM-ready lead capture within GoHighLevel.",
 
   highlights: [
-    "Rebranded and modernized legacy website design",
-    "Migrated site from previous platform to GoHighLevel",
-    "Rebuilt layouts using custom HTML/CSS inside GHL",
-    "Improved section hierarchy and content clarity",
-    "Ensured CRM and lead capture integration compatibility",
-    "Maintained full responsive behavior across devices",
+    "Built conversion-focused real estate lead funnel",
+    "Structured clear offer and inquiry flow",
+    "Improved CTA placement and messaging hierarchy",
+    "Designed responsive layouts for desktop and mobile",
+    "Prepared funnel for CRM and automation integration",
   ],
 
   tools: [
     "GoHighLevel",
     "Custom HTML/CSS",
-    "Platform Migration",
-    "Responsive Design",
+    "Lead Generation",
+    "Funnel Design",
     "CRM Integration",
   ],
 
   images: [
-    "/images/projects/geoffluna/discoversouthernca/dsca.png",
+    "/images/projects/geoffluna/eastpoint/eastpoint.png",
   ],
 
   media: [
     {
       type: "image",
-      src: "/images/projects/geoffluna/discoversouthernca/dsca.png",
+      src: "/images/projects/geoffluna/eastpoint/eastpoint.png",
     },
   ],
 
-  links: [],
+  links: [
+    {
+      label: "Live Website",
+      url: "https://start.eastpointproperties.net/",
+    },
+  ],
+
+  experienceIds: ["lunatik"],
+},
+
+// us packagers
+{
+  id: "us-packagers",
+  title: "US Packagers",
+  category: "Web",
+
+  oneLiner:
+    "Designed and developed a premium custom packaging website focused on high-end presentation and conversion.",
+
+  overview: `Designed and developed the US Packagers website as a premium custom packaging experience built to showcase highly customized boxes for brands, companies, influencers, events, and special projects.
+
+The project focused heavily on creative visual direction, strong product presentation, conversion-focused messaging, and custom interactive elements. I developed the site inside GoHighLevel using custom HTML, CSS, JavaScript, and GSAP to create a more polished experience beyond standard GHL layouts.
+
+The website includes custom animations, responsive layouts, interactive product sections, AI-assisted visuals, video elements, lead capture functionality, and an integrated AI assistant experience. The overall direction was designed to position US Packagers as a premium provider capable of producing packaging concepts beyond standard off-the-shelf solutions.`,
+
+  highlights: [
+    "Designed and developed premium custom packaging website",
+    "Built custom sections inside GoHighLevel",
+    "Implemented GSAP scroll-based animations",
+    "Created interactive product and packaging presentations",
+    "Developed responsive layouts for desktop, tablet, and mobile",
+    "Integrated lead capture and inquiry functionality",
+    "Used AI-assisted visuals and creative assets",
+    "Integrated AI assistant experience",
+  ],
+
+  tools: [
+    "GoHighLevel",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "GSAP",
+    "AI Image Generation",
+    "AI Video Generation",
+    "Responsive Design",
+    "Conversion-Focused Web Design",
+  ],
+
+  images: [
+    "/images/projects/geoffluna/uspackagers/uspackagers.png",
+  ],
+
+  media: [
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/uspackagers/uspackagers.png",
+    },
+  ],
+
+  links: [
+    {
+      label: "Live Website",
+      url: "https://www.uspackagers.com/",
+    },
+  ],
 
   experienceIds: ["lunatik"],
 },
@@ -1587,23 +1697,43 @@ Beyond design updates, the migration ensured smoother integration with CRM workf
   id: "lunatik",
   title: "Lunatik Marketing Agency",
   category: "Web",
+
   oneLiner:
     "Agency site redesign emphasizing authority and structured service presentation.",
+
   overview:
     "Reworked layout structure and service presentation to improve clarity, offer positioning, and premium visual rhythm.",
+
   highlights: [
     "Clear service positioning",
     "Improved visual rhythm and spacing",
     "Authority-driven layout structure",
   ],
-  tools: ["GoHighLevel", "Brand Structuring", "Custom Sections"],
+
+  tools: [
+    "GoHighLevel",
+    "Brand Structuring",
+    "Custom Sections",
+  ],
+
   images: [
-    "/images/projects/geoffluna/lunatik/lunat.png",
+    "/images/projects/geoffluna/lunatik/lunatik.png",
   ],
+
   media: [
-    { type: "image", src: "/images/projects/geoffluna/lunatik/lunat.png" },
+    {
+      type: "image",
+      src: "/images/projects/geoffluna/lunatik/lunatik.png",
+    },
   ],
-  links: [],
+
+  links: [
+    {
+      label: "Live Website",
+      url: "https://lunatikmarketingagency.com/",
+    },
+  ],
+
   experienceIds: ["lunatik"],
 },
 
