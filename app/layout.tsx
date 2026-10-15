@@ -18,10 +18,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
   title: "PGJ Portfolio",
   description: "Work and experience portfolio of Phoebe Grace Juayong",
+  verification: {
+    google: "PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
+  },
 };
+
 
 export default function RootLayout({
   children,
