@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: "PGJ Portfolio",
   description: "Work and experience portfolio of Phoebe Grace Juayong",
   verification: {
-    google: "PfzIYypigy79kTroCy1RIUn--83lBcynD9EIXLWRcn7w",
+    google: "fzIYypigy79kTroCy1RIUn--83lBcynD9EIXLWRcn7w",
   },
 };
 
